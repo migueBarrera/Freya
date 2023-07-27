@@ -11,10 +11,10 @@
 
 | Name | Technology | Description | Solution | CI | CD |
 | --- | --- | --- | --- | --- | --- |
-| Freya Mobile App | .NET MAUI | Mobile app |![Build status](https://github.com/migueBarrera)|![Build status](https://github.com/migueBarrera)|![Build status](https://github.com/migueBarrera)|
-| Freya Client | WPF | Mobile app |![Build status](https://github.com/migueBarrera)|![Build status](https://github.com/migueBarrera)|![Build status](https://github.com/migueBarrera)|
-| Freya Manager | WPF | Mobile app| ![Build status](https://github.com/migueBarrera)|![Build status](https://github.com/migueBarrera)|![Build status](https://github.com/migueBarrera)|
-| Freya API | ASP.NET | Mobile app |![Build status](https://github.com/migueBarrera)|![Build status](https://github.com/migueBarrera)|![Build status](https://github.com/migueBarrera)|
+| Freya Mobile App | .NET MAUI | Mobile app | [FreyaMobile.sln](https://github.com/migueBarrera/Freya/FreyaMobile.sln) | [Maui CI](https://github.com/migueBarrera/Freya/pipelines/maui-CI.yml) | [Maui CD](https://github.com/migueBarrera/Freya/pipelines/maui-CD.yml)|
+| Freya Client | WPF | Mobile app | [Freya.sln](https://github.com/migueBarrera/Freya/Freya.sln)| [Windows CI](https://github.com/migueBarrera/Freya/pipelines/windows-CI.yml)| [Windows CD](https://github.com/migueBarrera/Freya/windows-CD.yml)|
+| Freya Manager | WPF | Mobile app| [FreyaManager.sln](https://github.com/migueBarrera/Freya/FreyaManager.sln)| [Windows Manager CI](https://github.com/migueBarrera/Freya/windows-manager-CI.yml)| [Windows Manager CD](https://github.com/migueBarrera/Freya/windows-manager-CD.yml)|
+| Freya API | ASP.NET | Mobile app | [FreyaApi.sln](https://github.com/migueBarrera/Freya/FreyaApi.sln)| [Api CI](https://github.com/migueBarrera/Freya/api-CI.yml)| [Api CD](https://github.com/migueBarrera/Freya/api-CD.yml)|
 
 
 
