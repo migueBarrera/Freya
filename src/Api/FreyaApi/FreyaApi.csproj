@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<ApplicationInsightsResourceId>/subscriptions/639df1b9-1888-419f-9f1d-95d409196026/resourceGroups/NetworkWatcherRG/providers/microsoft.insights/components/MiBebeApi</ApplicationInsightsResourceId>
+		<UserSecretsId>3421af8f-3b26-4596-a8f5-2aac4d155f27</UserSecretsId>
+		<WarningsAsErrors>Nullable</WarningsAsErrors>
+		<AssemblyVersion>1.0.0</AssemblyVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Views\passchanged-client.html" />
+	  <None Remove="Views\passchanged-employee.html" />
+	  <None Remove="Views\privacy-policy.html" />
+	  <None Remove="Views\welcomeclient.html" />
+	  <None Remove="Views\welcomeemployee.html" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Views\passchanged-client.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Views\privacy-policy.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Views\passchanged-employee.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Views\welcomeemployee.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Views\welcomeclient.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.3" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.4" />
+		<PackageReference Include="Serilog" Version="2.12.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Common\FreyaPayments.Core\FreyaPayments.Core.csproj" />
+	  <ProjectReference Include="..\..\Common\Models.Core\Models.Core.csproj" />
+	  <ProjectReference Include="..\..\Common\UploaderWasabi\UploaderWasabi.csproj" />
+	  <ProjectReference Include="..\FreyaApi.Infrastructure\FreyaApi.Infrastructure.csproj" />
+	  <ProjectReference Include="..\FreyaApi.Repository\FreyaApi.Repository.csproj" />
+	</ItemGroup>
+
+
+</Project>

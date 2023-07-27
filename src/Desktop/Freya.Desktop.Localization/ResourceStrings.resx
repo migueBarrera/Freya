@@ -1,0 +1,663 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="address_of_clinic" xml:space="preserve">
+    <value>Dirección de clínica</value>
+  </data>
+  <data name="add_client" xml:space="preserve">
+    <value>Añadir cliente</value>
+  </data>
+  <data name="add_clinic" xml:space="preserve">
+    <value>Añadir clínica</value>
+  </data>
+  <data name="add_employee" xml:space="preserve">
+    <value>Añadir empleado</value>
+  </data>
+  <data name="add_new_client_title" xml:space="preserve">
+    <value>Añade un nuevo cliente</value>
+  </data>
+  <data name="add_new_employee_title" xml:space="preserve">
+    <value>Añade un nuevo empleado</value>
+  </data>
+  <data name="app_info" xml:space="preserve">
+    <value>Información de la aplicación</value>
+  </data>
+  <data name="app_name" xml:space="preserve">
+    <value>Freya</value>
+  </data>
+  <data name="app_name_manager" xml:space="preserve">
+    <value>Freya Manager</value>
+  </data>
+  <data name="buy_your_subscription" xml:space="preserve">
+    <value>Adquiere una suscripción</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="change" xml:space="preserve">
+    <value>Cambiar</value>
+  </data>
+  <data name="change_pass" xml:space="preserve">
+    <value>Cambiar contraseña</value>
+  </data>
+  <data name="change_your_pass" xml:space="preserve">
+    <value>Cambia tu contraseña</value>
+  </data>
+  <data name="charges_done" xml:space="preserve">
+    <value>Cargos realizados</value>
+  </data>
+  <data name="check_fields" xml:space="preserve">
+    <value>Compruebe los campos</value>
+  </data>
+  <data name="check_update" xml:space="preserve">
+    <value>Comprobar actualización</value>
+  </data>
+  <data name="clients" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="clinic_your_subscription" xml:space="preserve">
+    <value>Suscripción de la clínica</value>
+  </data>
+  <data name="close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="create_employee" xml:space="preserve">
+    <value>Crear empleado</value>
+  </data>
+  <data name="currrent_pass" xml:space="preserve">
+    <value>Contraseña actual</value>
+  </data>
+  <data name="dialog_check_employee_asigned_before_body" xml:space="preserve">
+    <value>Empleado ya registrado y asignado a esta clínica</value>
+  </data>
+  <data name="dialog_check_employee_asigned_before_for_a_company_body" xml:space="preserve">
+    <value>Este cliente ya está asignado a esta compañia, si lo que quieres es asignarlo a una clínica en concreto, ve a la pestaña de empleados del detalle de la clínica.</value>
+  </data>
+  <data name="dialog_check_employee_asigned_before_for_a_company_title" xml:space="preserve">
+    <value>Ya asignado</value>
+  </data>
+  <data name="dialog_check_employee_asigned_before_title" xml:space="preserve">
+    <value>Ya asignado</value>
+  </data>
+  <data name="dialog_check_employee_asigned_question_body" xml:space="preserve">
+    <value>¿Quieres asignarlo a esta clínica?</value>
+  </data>
+  <data name="dialog_check_employee_asigned_question_title" xml:space="preserve">
+    <value>Empleado ya registrado</value>
+  </data>
+  <data name="dialog_check_employee_asigned_success_body" xml:space="preserve">
+    <value>Empleado asignado correctamente a la clínica</value>
+  </data>
+  <data name="dialog_check_employee_asigned_success_title" xml:space="preserve">
+    <value>Genial</value>
+  </data>
+  <data name="dialog_check_employee_asigned_to_other_company_body" xml:space="preserve">
+    <value>Un empleado no puede estar vinculado a dos compañias diferentes.</value>
+  </data>
+  <data name="dialog_check_employee_asigned_to_other_company_title" xml:space="preserve">
+    <value>Este empleado esta asignado a otra compañia distinta</value>
+  </data>
+  <data name="dialog_check_employee_want_register_question_body" xml:space="preserve">
+    <value>¿Quieres crear un nuevo empleado?</value>
+  </data>
+  <data name="dialog_check_employee_want_register_question_title" xml:space="preserve">
+    <value>Empleado no existe</value>
+  </data>
+  <data name="dialog_client_detail_remove_client_body" xml:space="preserve">
+    <value>¿Seguro que quiere eliminar este cliente? Se perderán todos los recursos asosiados como imagenes, videos, etc...</value>
+  </data>
+  <data name="dialog_client_detail_remove_client_title" xml:space="preserve">
+    <value>Eliminar cliente</value>
+  </data>
+  <data name="dialog_client_detail_update_plan_body" xml:space="preserve">
+    <value>Parece que este cliente se creo con una subscripción diferente ¿Quieres actualizar el espacio disponible de este cliente a la nueva subscripción?</value>
+  </data>
+  <data name="dialog_client_detail_update_plan_title" xml:space="preserve">
+    <value>Actualizar suscripción</value>
+  </data>
+  <data name="dialog_client_profile_change_pass_success_body" xml:space="preserve">
+    <value>Se ha cambiado correctamente la contraseña</value>
+  </data>
+  <data name="dialog_client_profile_change_pass_success_title" xml:space="preserve">
+    <value>Contraseña cambiada</value>
+  </data>
+  <data name="dialog_client_you_need_create_a_clinic_before_a_client_body" xml:space="preserve">
+    <value>Primero debes crear una cínica antes de poder añadir algún cliente</value>
+  </data>
+  <data name="dialog_client_you_need_create_a_clinic_before_a_client_Title" xml:space="preserve">
+    <value>No puedes realizar esta acción</value>
+  </data>
+  <data name="dialog_clinic_detail_cancel_subscription_clinic_body" xml:space="preserve">
+    <value>¿Seguro que quiere cancelar esta subscripción? No se devolverá el dinero</value>
+  </data>
+  <data name="dialog_clinic_detail_cancel_subscription_clinic_success_body" xml:space="preserve">
+    <value>Ya no se realizarán más cobros para la subscripción cancelada</value>
+  </data>
+  <data name="dialog_clinic_detail_cancel_subscription_clinic_success_title" xml:space="preserve">
+    <value>Subscripción cancelada</value>
+  </data>
+  <data name="dialog_clinic_detail_cancel_subscription_clinic_title" xml:space="preserve">
+    <value>Cancelar subscripción</value>
+  </data>
+  <data name="dialog_clinic_detail_remove_clinic_body" xml:space="preserve">
+    <value>¿Seguro que quiere eliminar esta cínica? Se perderán todos los datos asosiados como empleados, clientes, imagenes, videos, etc...</value>
+  </data>
+  <data name="dialog_clinic_detail_remove_clinic_title" xml:space="preserve">
+    <value>Eliminar clínica</value>
+  </data>
+  <data name="dialog_clinic_subscrption_want_cancel_but_has_other_active_body" xml:space="preserve">
+    <value>Para cancelar una subscripción, debes desactivar la subscripción activa</value>
+  </data>
+  <data name="dialog_clinic_subscrption_want_cancel_but_has_other_active_title" xml:space="preserve">
+    <value>No puedes contratar otra subscripción</value>
+  </data>
+  <data name="dialog_create_new_employee_success_body" xml:space="preserve">
+    <value>El empleado ha sido creado correctamente, La contraseña de acceso a sido enviada al correo electrónico</value>
+  </data>
+  <data name="dialog_create_new_employee_success_title" xml:space="preserve">
+    <value>Empleado creado</value>
+  </data>
+  <data name="dialog_employee_not_is_manager_and_not_has_any_clinic_body" xml:space="preserve">
+    <value>Este empleado no esta asociado a ninguna clínica</value>
+  </data>
+  <data name="dialog_employee_not_is_manager_and_not_has_any_clinic_title" xml:space="preserve">
+    <value>Contacta con tu gerente</value>
+  </data>
+  <data name="dialog_error_client_space_available_limited_body" xml:space="preserve">
+    <value>Supera el espacio disponible para este cliente, aumente su plan de subscripción si desea más espacio</value>
+  </data>
+  <data name="dialog_error_client_space_available_limited_title" xml:space="preserve">
+    <value>Limite de espacio disponible</value>
+  </data>
+  <data name="dialog_error_no_internet_body" xml:space="preserve">
+    <value>Esta app requiere de internet para funcionar</value>
+  </data>
+  <data name="dialog_error_no_internet_title" xml:space="preserve">
+    <value>No hay internet</value>
+  </data>
+  <data name="dialog_error_response_forbidden_body" xml:space="preserve">
+    <value>No tienes permiso para procesar la solicitud</value>
+  </data>
+  <data name="dialog_error_response_forbidden_title" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="dialog_error_response_unauthorized_body" xml:space="preserve">
+    <value>Debe volver a inciar sesin</value>
+  </data>
+  <data name="dialog_error_response_unauthorized_title" xml:space="preserve">
+    <value>Ha caducado la sesin</value>
+  </data>
+  <data name="dialog_error_server_error_body" xml:space="preserve">
+    <value>Se ha detectado un error en la comunicación con el servidor. Por favor, inténtelo de nuevo más tarde</value>
+  </data>
+  <data name="dialog_error_server_not_response_body" xml:space="preserve">
+    <value>Prueba en otro momento</value>
+  </data>
+  <data name="dialog_error_server_not_response_title" xml:space="preserve">
+    <value>El servidor no responde</value>
+  </data>
+  <data name="dialog_menu_close_session_body" xml:space="preserve">
+    <value>¿Estas seguro de que quieres salir?</value>
+  </data>
+  <data name="dialog_menu_close_session_title" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
+  <data name="dialog_multimedia_download_file_fail_body" xml:space="preserve">
+    <value>Ha ocurrido un problma con la descarga</value>
+  </data>
+  <data name="dialog_multimedia_download_file_success_body" xml:space="preserve">
+    <value>Su fichero ha sido descargado</value>
+  </data>
+  <data name="dialog_multimedia_download_file_title" xml:space="preserve">
+    <value>Descarga de archivos</value>
+  </data>
+  <data name="dialog_multimedia_remove_body" xml:space="preserve">
+    <value>¿Seguro que quieres eliminar este recurso?</value>
+  </data>
+  <data name="dialog_multimedia_remove_title" xml:space="preserve">
+    <value>Eliminar recurso</value>
+  </data>
+  <data name="dialog_new_client_client_assigned_before_body" xml:space="preserve">
+    <value>Este cliente ya está asignado a esta clínica</value>
+  </data>
+  <data name="dialog_new_client_client_assigned_before_title" xml:space="preserve">
+    <value>Ya asignado</value>
+  </data>
+  <data name="dialog_new_client_client_assigned_body" xml:space="preserve">
+    <value>Cliente asignado correctamente a la clínica</value>
+  </data>
+  <data name="dialog_new_client_client_assigned_title" xml:space="preserve">
+    <value>Genial</value>
+  </data>
+  <data name="dialog_new_client_client_exist_body" xml:space="preserve">
+    <value>¿Quieres crear un nuevo cliente con este correo?</value>
+  </data>
+  <data name="dialog_new_client_client_exist_title" xml:space="preserve">
+    <value>Cliente no existe</value>
+  </data>
+  <data name="dialog_new_client_client_registered_body" xml:space="preserve">
+    <value>Cliente ya registrado</value>
+  </data>
+  <data name="dialog_new_client_client_registered_title" xml:space="preserve">
+    <value>¿Quieres asignarlo a esta clínica?</value>
+  </data>
+  <data name="dialog_new_client_clinic_not_subscription_valid_body" xml:space="preserve">
+    <value>Esta clínica no dispone de una suscripción activa</value>
+  </data>
+  <data name="dialog_new_client_clinic_not_subscription_valid_title" xml:space="preserve">
+    <value>Clínica sin suscripción</value>
+  </data>
+  <data name="dialog_new_client_success_body" xml:space="preserve">
+    <value>El cliente ha sido creado correctamente y se ha enviado su contraseña al correo electrónico</value>
+  </data>
+  <data name="dialog_new_client_success_title" xml:space="preserve">
+    <value>Cliente creado</value>
+  </data>
+  <data name="dialog_profile_updated_success_body" xml:space="preserve">
+    <value>Tus datos de perfil han sido actualizados</value>
+  </data>
+  <data name="dialog_profile_updated_success_title" xml:space="preserve">
+    <value>Datos actualizados</value>
+  </data>
+  <data name="dialog_register_employee_can_not_register_employee_manager_to_individual_clinic_body" xml:space="preserve">
+    <value>Este empleado es dueño o gerente de la compañia, ya tiene acceso a esta clínica.</value>
+  </data>
+  <data name="dialog_register_employee_can_not_register_employee_manager_to_individual_clinic_title" xml:space="preserve">
+    <value>Empleado ya registrado</value>
+  </data>
+  <data name="dialog_sign_in_recover_pass_question_body" xml:space="preserve">
+    <value>¿Estas seguro que quieres restablecer la contraseña?</value>
+  </data>
+  <data name="dialog_sign_in_recover_pass_question_title" xml:space="preserve">
+    <value>Restablecer contraseña</value>
+  </data>
+  <data name="dialog_sign_in_recover_pass_success_body" xml:space="preserve">
+    <value>Mire su bandeja de entrada para ver su nueva contraseña</value>
+  </data>
+  <data name="dialog_sign_in_recover_pass_success_title" xml:space="preserve">
+    <value>Contraseña restablecida</value>
+  </data>
+  <data name="dialog_updater_update_available_body" xml:space="preserve">
+    <value>¿Quieres actualizar la app? Se va a instalar una nueva versión</value>
+  </data>
+  <data name="dialog_updater_update_available_title" xml:space="preserve">
+    <value>Actualización disponible</value>
+  </data>
+  <data name="dialog_updater_update_fail_body" xml:space="preserve">
+    <value>Ocurrio un error</value>
+  </data>
+  <data name="dialog_updater_update_fail_title" xml:space="preserve">
+    <value>No se ha podido actualizar la app</value>
+  </data>
+  <data name="dialog_updater_update_not_available_body" xml:space="preserve">
+    <value>Tienes la última versión instalada</value>
+  </data>
+  <data name="dialog_updater_update_not_available_title" xml:space="preserve">
+    <value>No es necesario actualizar tu aplicación</value>
+  </data>
+  <data name="dialog_updater_update_success_body" xml:space="preserve">
+    <value>Se va ha cerrar y lanzar el instalador</value>
+  </data>
+  <data name="dialog_updater_update_success_title" xml:space="preserve">
+    <value>Actualización descargada</value>
+  </data>
+  <data name="downloading" xml:space="preserve">
+    <value>Descargando</value>
+  </data>
+  <data name="download_menu_no_current_downloads" xml:space="preserve">
+    <value>No hay subidas en progreso</value>
+  </data>
+  <data name="edit_clinic_data" xml:space="preserve">
+    <value>Editar los datos de la clínica</value>
+  </data>
+  <data name="edit_data_of_employee" xml:space="preserve">
+    <value>Editar los datos del empleado</value>
+  </data>
+  <data name="edit_your_data" xml:space="preserve">
+    <value>Edita tus datos</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="employees" xml:space="preserve">
+    <value>Empleados</value>
+  </data>
+  <data name="employee_rol_clinic_manager" xml:space="preserve">
+    <value>Dueño de clínica</value>
+  </data>
+  <data name="employee_rol_clinic_office" xml:space="preserve">
+    <value>Empleado clínica</value>
+  </data>
+  <data name="employee_rol_company_manager" xml:space="preserve">
+    <value>Empleado de compañía</value>
+  </data>
+  <data name="employee_rol_company_owner" xml:space="preserve">
+    <value>Dueño de compañía</value>
+  </data>
+  <data name="enter" xml:space="preserve">
+    <value>Entrar</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="images" xml:space="preserve">
+    <value>Imagenes</value>
+  </data>
+  <data name="incidences_body" xml:space="preserve">
+    <value>Si detecta algún tipo de problema o incidencia, compruebe nuestro listado de preguntas frecuentes. Si no consigue encontrar la solución ahí, siempre puede escribirnos a freya.soft.app@gmail.com. También puede probar a instalar una versión más reciente.</value>
+  </data>
+  <data name="incidences_title" xml:space="preserve">
+    <value>Incidencias</value>
+  </data>
+  <data name="menu_clients" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="menu_clinic" xml:space="preserve">
+    <value>Clínica</value>
+  </data>
+  <data name="menu_clinics" xml:space="preserve">
+    <value>Clínicas</value>
+  </data>
+  <data name="menu_faqs" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="menu_settings" xml:space="preserve">
+    <value>Ajustes</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="name_of_clinic" xml:space="preserve">
+    <value>Nombre de la clínica</value>
+  </data>
+  <data name="new_client" xml:space="preserve">
+    <value>Nuevo cliente</value>
+  </data>
+  <data name="new_clinic" xml:space="preserve">
+    <value>Nueva clínica</value>
+  </data>
+  <data name="new_employee" xml:space="preserve">
+    <value>Nuevo empleado</value>
+  </data>
+  <data name="new_pass" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="nif" xml:space="preserve">
+    <value>NIF</value>
+  </data>
+  <data name="nif_of_clinic" xml:space="preserve">
+    <value>NIF de la clínica</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="no_clients_found" xml:space="preserve">
+    <value>No hay ningún cliente</value>
+  </data>
+  <data name="no_clinics_found" xml:space="preserve">
+    <value>No hay ninguna clínica</value>
+  </data>
+  <data name="no_employees_found" xml:space="preserve">
+    <value>No hay ningún empleado</value>
+  </data>
+  <data name="no_faqs_found" xml:space="preserve">
+    <value>No hay niguna pregunta frecuente</value>
+  </data>
+  <data name="no_images_found" xml:space="preserve">
+    <value>No hay ninguna imagen</value>
+  </data>
+  <data name="no_sounds_found" xml:space="preserve">
+    <value>No hay ningún sonido</value>
+  </data>
+  <data name="no_videos_found" xml:space="preserve">
+    <value>No hay ningún video</value>
+  </data>
+  <data name="page_title_add_client" xml:space="preserve">
+    <value>Añadir cliente</value>
+  </data>
+  <data name="page_title_add_employee" xml:space="preserve">
+    <value>Añadir empleado</value>
+  </data>
+  <data name="page_title_client_detail" xml:space="preserve">
+    <value>Ficha cliente</value>
+  </data>
+  <data name="page_title_clinics" xml:space="preserve">
+    <value>Clínicas</value>
+  </data>
+  <data name="page_title_clinic_detail" xml:space="preserve">
+    <value>Ficha clínica</value>
+  </data>
+  <data name="page_title_edit_client" xml:space="preserve">
+    <value>Editar cliente</value>
+  </data>
+  <data name="page_title_edit_clinic" xml:space="preserve">
+    <value>Editar clínica</value>
+  </data>
+  <data name="page_title_edit_employee" xml:space="preserve">
+    <value>Editar empleado</value>
+  </data>
+  <data name="page_title_faq" xml:space="preserve">
+    <value>Preguntas frecuentes</value>
+  </data>
+  <data name="page_title_new_client" xml:space="preserve">
+    <value>Nuevo cliente</value>
+  </data>
+  <data name="page_title_new_clinic" xml:space="preserve">
+    <value>Crear nueva clínica</value>
+  </data>
+  <data name="page_title_new_employee" xml:space="preserve">
+    <value>Nuevo empleado</value>
+  </data>
+  <data name="page_title_profile" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="page_title_settings" xml:space="preserve">
+    <value>Ajustes</value>
+  </data>
+  <data name="pass" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="payment_product_button_buy" xml:space="preserve">
+    <value>Contratar</value>
+  </data>
+  <data name="payment_product_current_cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="payment_product_info_month" xml:space="preserve">
+    <value>/mes</value>
+  </data>
+  <data name="payment_product_info_row_money" xml:space="preserve">
+    <value>Dispone de de {0} por cada cliente</value>
+  </data>
+  <data name="payment_product_info_row_phone" xml:space="preserve">
+    <value>Acceso a las aplicaciones móviles para tus clientes.</value>
+  </data>
+  <data name="payment_product_info_row_support" xml:space="preserve">
+    <value>Soporte y mejoras continuas. Trabajamos continuamente en mejorar el sistema</value>
+  </data>
+  <data name="phone" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="recover_pass" xml:space="preserve">
+    <value>Recuperar contraseña</value>
+  </data>
+  <data name="remove_employee_message" xml:space="preserve">
+    <value>¿Seguro que quiere eliminar este empleado?</value>
+  </data>
+  <data name="remove_employee_title" xml:space="preserve">
+    <value>Eliminar empleado</value>
+  </data>
+  <data name="repeat_new_pass" xml:space="preserve">
+    <value>Repite la nueva contraseña</value>
+  </data>
+  <data name="rol_of_employee" xml:space="preserve">
+    <value>Rol de empleado</value>
+  </data>
+  <data name="save_changes" xml:space="preserve">
+    <value>Guardar cambios</value>
+  </data>
+  <data name="search_clients" xml:space="preserve">
+    <value>Buscar clientes...</value>
+  </data>
+  <data name="search_clinics_dots" xml:space="preserve">
+    <value>Buscar clínicas...</value>
+  </data>
+  <data name="see_detail" xml:space="preserve">
+    <value>Ver detalle</value>
+  </data>
+  <data name="see_profile" xml:space="preserve">
+    <value>Ver perfil</value>
+  </data>
+  <data name="sounds" xml:space="preserve">
+    <value>Sonidos</value>
+  </data>
+  <data name="subscription" xml:space="preserve">
+    <value>Subscripción</value>
+  </data>
+  <data name="surname" xml:space="preserve">
+    <value>Apellidos</value>
+  </data>
+  <data name="update_plan" xml:space="preserve">
+    <value>Actualizar plan</value>
+  </data>
+  <data name="upload_images" xml:space="preserve">
+    <value>Subir imágenes</value>
+  </data>
+  <data name="upload_sounds" xml:space="preserve">
+    <value>Subir sonidos</value>
+  </data>
+  <data name="upload_videos" xml:space="preserve">
+    <value>Subir videos</value>
+  </data>
+  <data name="version_prefix" xml:space="preserve">
+    <value>Versión:</value>
+  </data>
+  <data name="videos" xml:space="preserve">
+    <value>Videos</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>¡Bienvenido!</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Si</value>
+  </data>
+</root>

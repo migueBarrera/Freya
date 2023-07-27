@@ -1,0 +1,169 @@
+Clausula primera. - antecedentes
+sin antecedentes
+clausula segunda. - objeto del contrato
+freya software otorgar a la el cliente licencia para utilizar los programas que se relacionan
+en el anexo i "relacion de programas, precio y forma de pago", asi como la documentacion
+correspondiente, obligandose el cliente a pagar la cantidad precisada en el mismo anexo, y de
+acuerdo al procedimiento establecido en el mismo, el cual ser requisito para obtener los derechos
+de uso, bajo los terminos y condiciones del presente contrato y sus anexos.
+El pago de la licencia otorgada bajo el presente contrato, no constituye la compra de los programas
+ni de los titulos, ni derechos de autor correspondientes.
+Clausula tercera. - precio y forma de pago
+el precio convenido por la licencia de uso de los programas objeto de este contrato es el que se
+precisa en el anexo i "relacion de programas, precio y forma de pago", pagadero en moneda euro.
+El pago correspondiente debe ser cubierto por el cliente en la forma y terminos que se precisan
+en el anexo i antes mencionado.
+Clausula cuarta. - vigencia.
+El presente contrato tendra vigencia a partir de la fecha de aceptacion de acuerdo a la clausula
+decima primera.
+Clausula quinta. - propiedad de los programas y derechos de autor.
+2
+los programas amparados por este contrato bajo licencia, las reproducciones originales de los
+mismos, cualquier copia parcial o total, realizada por freya software o el cliente o por
+cualquier otra persona, los derechos legales de copia, las patentes, las marcas, los secretos
+comerciales, y de cualquier otro derecho intelectual o de propiedad, pertenecen a freya
+software, por lo que cuenta con las autorizaciones suficientes para otorgar a su vez licencias
+de uso sobre dichos programas.
+Freya software garantiza al cliente contra todo problema de caracter legal que pudiera
+ocasionar un tercero con relacion a la propiedad o derecho de autor sobre los programas objeto
+del presente contrato. En caso de producirse esta eventualidad, el cliente dara aviso por escrito
+a freya software para que asuma las acciones legales pertinentes.
+El cliente acepta y reconoce que los programas bajo licencia son secretos comerciales de freya
+software, asi como toda la informacion o documentacion que le sea proporcionada, asumiendo
+que toda comunicacion via email y telefonica es de caracter confidencial.
+El cliente deber abstenerse de copiar con o sin fines de lucro los programas bajo licencia,
+dictando las medidas internas necesarias tendientes a la proteccion de los de autor de los
+propietarios de los programas bajo licencia.
+Cualquier diseno, todo lo necesario para su adaptacion a las diferentes plataformas, asi como todo
+el contenido, sus traducciones y todo el material audiovisual que es aportado por el cliente, es
+el cliente responsable de cumplir con la legislacion vigente en todo lo que a ello se refiere.
+Ademas de todo lo que respecta a proteccion de datos, derechos de autor, patentes, ley de
+proteccion del menor y cualquiera que pudiera ser motivo de infraccion en lo que a este parrafo
+se refiere.
+Clausula sexta. - alcance del uso autorizado de los programas.
+Freya software proporciona al cliente el numero de los programas bajo licencia que se
+establece en el anexo i "relacion de programas, precio y forma de pago", en el medio digital en
+que se encuentre.
+En caso de que la dependencia requiera modificar el lugar de la instalacion de los programas bajo
+licencia, esta podra llevarse a cabo, previa notificacion a freya software.
+El cliente no tendra derecho de comercializar o sublicenciar en ninguna forma los programas de
+computo bajo licencia. Si dentro de las funciones del cliente no se encuentran las de la prestacion
+de servicios a terceros a traves de consulta de informacion, asesorias o procesamiento remoto de
+datos; esta no podra realizarlos con base en los programas bajo licencia, sin la autorizacion
+expresa y por escrito de freya software.
+Clausula septima. - riesgo de perdidas
+3
+si cualquier programa autorizado y/o material de soporte se pierde o se dana durante el envio,
+freya software lo reemplazara y suministrar el medio de almacenamiento del programa
+autorizado.
+Si el dano se produce mientras esta en posesion del cliente, freya software reemplazar ese
+programa autorizado o material de soporte, facturando un cargo por el medio de almacenamiento
+del programa, a menos que haya sido suministrado por el cliente.
+Clausula octava. - confidencialidad
+el cliente, se compromete a no divulgar la informacion que le haya sido proporcionada por freya
+software y que sea identificada por este como "confidencial", a excepcion de aquella informacion
+que sea de dominio publico.
+Clausula novena. - copias adicionales, nuevas versiones y actualizaciones
+las versiones ofrecidas para android, ios, aplicaciones escritorio para so window y navegadores
+web se ajustaran tanto a las actualizaciones mas recientes coincidentes con la emision de este
+presupuesto, asi como a las mas recurrentes por los usuarios en la presente fecha de emision del
+contrato. Freya software no se hace responsable de cambios en las actualizaciones o
+incompatibilidades que puedan derivarse de esta casuistica.
+Freya software podra informar al cliente de cualquier actualizacion, o nueva version que
+implique una mejora de los programas bajo licencia para que este, de considerarlo necesario,
+puedan adquirirlos previo pago del importe que se estipule.
+El cliente podra obtener las actualizaciones y nuevas versiones de los programas bajo licencia
+a traves del presente contrato, podra hacerlo a traves de freya software o mediante el envio
+del mismo a traves de otros medios que se estime oportuno.
+Para el caso de que el cliente, durante la vigencia del presente contrato, requiera obtener las
+actualizaciones o nuevas versiones, el precio de estas debe ser el que en su momento acuerden
+las partes.
+Freya software podra incorporar nuevas funcionalidades y ponerlas a disposicion del cliente
+ya sea de forma gratuita o mediante una cuantia estipulada. Freya software se reserva el
+derecho a modificar el precio de los servicios ofrecidos notificandolos previamente a los clientes
+afectados.
+El original y cualquier copia parcial o total es propiedad de freya software.
+Clausula decima. - entrega e instalacion de los programas
+4
+los programas bajo licencia objeto del presente contrato, asi como la documentacion
+correspondiente, deben ser entregados por freya software a el cliente en la fecha estipulado
+segun el plazo de ejecucion.
+Freya software no se hace responsable de posibles retrasos por causa de naturaleza ajena a
+la empresa. En este plazo se ofrecera una version optima para su lanzamiento, algunas funciones
+de menor prioridad podran anadirse posteriormente acorde a la experiencia de usuario.
+Clausula decima primera. - pruebas de aceptacion de los programas
+el cliente debera dentro de los 10 dias naturales siguientes a la instalacion de los programas,
+manifestar por escrito a freya software la conformidad a las especificaciones tecnicas de
+funcionamiento de los referidos programas. Si transcurrido dicho termino, el cliente no ha
+manifestado su conformidad a freya software, se entendera que los programas han sido
+aceptados.
+El cliente podra otorgar un plazo de 50 dias naturales a freya software para que sustituya
+el programa defectuoso. Si vencido dicho plazo freya software no ha reemplazado el programa
+de computo, el cliente podra resolver el contrato y aplicar lo establecido en la clausula de
+penalidades.
+Clausula decima segunda. - capacitacion y soporte tecnico
+freya software garantizara a el cliente la existencia y calidad de la capacitacion para su
+personal, a fin de operar adecuadamente los programas bajo licencia. Dicha capacitacion podra
+prestarla directamente freya software o bien, a eleccion del cliente por conducto de un
+tercero.
+Freya software garantiza al cliente, la existencia y calidad de los servicios de soporte tecnico
+que esta requiera para la correcta operacion de los programas bajo licencia, en caso de detectar
+un error, fallo o funcionamiento distinto para el que fue disenado el cliente tiene la obligacion de
+reportarlo a freya. Soft. App@gmail. Com.
+Clausula decima tercera. - garantia y responsabilidad
+freya software garantiza al cliente el buen estado operacional de los programas bajo licencia
+y el medio digital en que estos se encuentran.
+Esta garantia debe ser valida siempre y cuando el cliente utilice los programas bajo licencia
+conforme a las especificaciones tecnicas, en la informacion y capacitacion que ha recibido por
+parte de freya software en cualquiera que sea el medio, asi como en la informacion contenida
+en los manuales de operacion. Durante el periodo de garantia, freya software proporcionar sin
+costo para el cliente todos los servicios necesarios para corregir los errores que se pudieran
+5
+presentar, y conviene en vigilar el desempeno de los programas proporcionando los servicios de
+respaldo respectivo.
+Para realizar la reparacion freya software deber efectuar un diagnostico sobre los programas
+bajo licencia que hayan sido reportados como defectuosos para determinar las causas que
+ocasionaron las fallas. En caso de que estos sean de una version no alterada, este a su eleccion,
+debera corregir los errores de programacion existentes o bien, reemplazar el programa por otro
+que ejecute las instrucciones para las que fue programado, en un plazo no mayor de 90 dias
+habiles, contados a partir de la fecha en que el cliente haya reportado al freya software la
+inadecuada operacion del programa de computo contratado.
+Si como resultado del diagnostico freya software demuestra que la falla corresponde a una
+version alterada, no autorizada por ella, o no concretada por ambas partes, no asume la
+responsabilidad de su reparacion.
+El cliente, en caso de detectar un error, fallo o funcionamiento distinto para el que fue disenado,
+tiene la obligacion de reportarlo a freya. Soft. App@gmail. Com
+esta garantia no es transferible y es valida durante 30 dias posteriores a la fecha de aceptacion
+por parte de la el cliente de los programas bajo licencia.
+Freya software no podra transferir parcial ni totalmente el servicio materia del contrato
+teniendo responsabilidad total sobre el contrato de servicio y cumplimiento del mismo.
+Clausula decima cuarta. - responsabilidad laboral
+el presente contrato no crea ni genera relacion juridica laboral alguna entre el cliente y el
+personal que contrate freya software.
+Clausula decima quinta. - resolucion del contrato
+cualquiera de las partes podra poner termino al presente contrato mediante aviso cursado a la
+otra parte por escrito con treinta (30) dias habiles de anticipacion.
+En caso de incumplimiento, por causa injustificada de alguna clausula del presente contrato, este
+podra ser resuelto por cualquiera de las partes, previo aviso por escrito con treinta (30) dias de
+anticipacion.
+Clausula decima septima. - penalidades
+freya software no se hace responsable de posibles retrasos por causa de naturaleza ajena a
+la empresa. En este plazo se ofrecera una version optima para su lanzamiento, algunas funciones
+de menor prioridad podran anadirse posteriormente acorde a la experiencia de usuario.
+6
+el retraso injustificado y de exclusiva razon de causa por parte freya software en el
+cumplimiento de lo convenido en el presente contrato dara lugar a ser sancionado ofreciendo un
+descuento de un porcentaje donde el total sea la suma de los dias de retraso. Esto se aplicara en
+los pagos sucesivos, con independencia de las responsabilidades civiles y penales que se pudiera
+generar como consecuencia del incumplimiento del presente contrato.
+Clausula decima octava. - modificaciones
+ninguna clausula del presente contrato podra ser modificada, suprimida o agregada por una de las
+partes unilateralmente. Toda proposicion de cambio deber ser comunicada y aceptada por escrito
+un mes antes de la fecha de realizacion.
+Clausula decima novena. - arbitraje
+las partes se someten al conocimiento y decision de uno o mas arbitros para la solucion de las
+controversias que en el futuro puedan surgir entre ellas como consecuencia del presente contrato.
+De acuerdo a la ley de arbitraje los arbitros resolveran las controversias que se originen con
+arreglo al derecho aplicable.
+
+Para mas información consule en: https://apifreyafertility.com/api/PrivacyPolicy/v1

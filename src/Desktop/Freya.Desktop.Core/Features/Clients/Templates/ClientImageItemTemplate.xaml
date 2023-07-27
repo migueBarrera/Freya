@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Freya.Desktop.Core.Features.Clients.Templates.ClientImageItemTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Style="{StaticResource BorderItemCardStyle}"
+            Padding="8">
+        <Grid>
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        MinWidth="180"
+                        VerticalAlignment="Center">
+                <Border  Height="180"
+                         Width="180"
+                         Margin="0,0,0,8"
+                         CornerRadius="2">
+                    <Border.Background>
+                        <ImageBrush Stretch="UniformToFill"
+                                    ImageSource="{Binding Data.Uri, FallbackValue=https://uning.es/wp-content/uploads/2016/08/ef3-placeholder-image.jpg}" />
+                    </Border.Background>
+                </Border>
+                <Grid>
+                    <TextBlock Text="{Binding Data.Size, Converter={StaticResource SizeToTextConverter}}"
+                               d:Text="5 GB"
+                               VerticalAlignment="Center"
+                               Style="{StaticResource FileSizeStyle}"
+                               HorizontalAlignment="Left" />
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                        <controls:IconButtonControl Command="{Binding DownloadCommand}"
+                                                    Style="{StaticResource SmallPrimaryStyleIconButton}"
+                                                    ImageSource="{StaticResource DownloadIconWhite}" />
+                        <controls:IconButtonControl Command="{Binding SeeCommand}"
+                                                    Margin="8,0,0,0"
+                                                    Style="{StaticResource SmallPrimaryStyleIconButton}"
+                                                    ImageSource="{StaticResource PlayIconWhite}" />
+                        <controls:IconButtonControl Command="{Binding DeleteCommand}"
+                                                    Margin="8,0,0,0"
+                                                    Style="{StaticResource SmallPrimaryStyleIconButton}"
+                                                    ImageSource="{StaticResource DeleteIcon}" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            <controls:LoaderView IsRunning="{Binding IsBusy}" />
+        </Grid>
+    </Border>
+</UserControl>

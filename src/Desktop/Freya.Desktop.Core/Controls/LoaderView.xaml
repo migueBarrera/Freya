@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="Freya.Desktop.Core.Controls.LoaderView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Freya.Desktop.Core.Controls"
+             mc:Ignorable="d"
+             x:Name="self"
+             Visibility="{Binding IsRunning, ElementName=self, Converter={StaticResource BooleanToVisibilityConverter}}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <DrawingImage x:Key="LoaderDrawingImage">
+                <DrawingImage.Drawing>
+                    <DrawingGroup ClipGeometry="M0,0 V12 H12 V0 H0 Z">
+                        <GeometryDrawing Brush="{DynamicResource primary1ColorBrush}"
+                                         Geometry="F1 M12,12z M0,0z M11.2475,5.61699C10.4942,5.48136 10.726,6.24148 10.659,6.62004 10.3024,8.62616 9.17613,9.94469 7.2404,10.5348 5.49481,11.0671 3.42517,10.3971 2.48006,8.98326 2.73887,8.96867 3.14619,8.99056 3.42689,8.95794L3.43419,8.95794C3.49771,8.95794 3.55737,8.94506 3.61359,8.91974 3.63892,8.91073 3.66081,8.89785 3.67712,8.8854 3.80202,8.80557 3.887,8.66436 3.887,8.50513L3.887,8.49955C3.887,8.29653 3.75137,8.12656 3.56638,8.07034 3.56466,8.07034 3.56295,8.06862 3.5608,8.06862 3.54621,8.06519 3.53204,8.05961 3.51573,8.05574 3.5123,8.05574 3.50844,8.05403 3.505,8.05403 3.49213,8.05231 3.47796,8.05231 3.46509,8.05231 3.45607,8.05231 3.44706,8.04888 3.43633,8.04888L3.41659,8.04888C2.71397,8.00381 1.89376,8.00166 1.20016,8.0433 0.867093,8.01626 0.722021,8.2785 0.713007,8.418 0.667941,9.14593 0.665794,9.8773 0.698414,10.6052 0.698414,10.607 0.698414,10.6087 0.698414,10.6108L0.698414,10.7937C0.698414,11.0417,0.901,11.2443,1.14908,11.2443L1.15638,11.2443C1.31562,11.2443 1.45511,11.1611 1.53494,11.0362 1.55125,11.0164 1.5637,10.9945 1.57099,10.9709 1.57099,10.9692 1.57271,10.9692 1.57271,10.9675 1.57271,10.9641 1.57614,10.9619 1.57614,10.9585 1.57614,10.9568 1.57614,10.955 1.57786,10.9529 1.59589,10.904 1.60876,10.8499 1.60876,10.7937L1.60876,10.7211C1.63409,10.3971 1.6122,9.96787 1.62336,9.72322 1.74096,9.81206 1.74096,9.81206 1.75555,9.82279 1.93496,9.96958 2.10665,10.1198 2.28605,10.2666 3.98829,11.6538 5.89827,12.0392 7.95374,11.2752 10.0092,10.5112 11.2149,8.9794 11.5479,6.79902 11.6115,6.37711 11.9012,5.73416 11.2475,5.61656L11.2475,5.61699z M1.283,5.56977C1.44223,4.19373 2.07445,3.0765 3.17323,2.22882 5.12526,0.722298 8.18895,1.07554 9.48902,3.01298 9.26455,3.02199 8.98213,3.00955 8.75035,3.02757L8.56923,3.02757C8.32115,3.02757,8.11856,3.23059,8.11856,3.47824L8.11856,3.48554C8.11856,3.73362,8.32158,3.93621,8.56923,3.93621L8.60357,3.93621C8.61258,3.93792 8.61987,3.94179 8.62889,3.94179 9.34953,3.989 10.0775,3.99072 10.7964,3.93449 10.9775,3.9199 11.2707,3.64477 11.2835,3.47438 11.3308,2.80439 11.3398,2.10564 11.3054,1.43006L11.3054,1.29229C11.3054,1.24722 11.2964,1.20344 11.2835,1.16181 11.2818,1.15451 11.2801,1.14721 11.2762,1.13992 11.2166,0.966088 11.0518,0.839472 10.856,0.839472L10.8488,0.839472C10.847,0.839472 10.8453,0.839472 10.8432,0.839472 10.8376,0.839472 10.8324,0.837755 10.8286,0.837755 10.8088,0.836038 10.7869,0.841189 10.7633,0.848485 10.6002,0.879388 10.4702,1.00042 10.4191,1.15623 10.4101,1.17425 10.4028,1.19228 10.3994,1.21074 10.3324,1.49874 10.4084,1.86442 10.4084,2.37689 9.99205,2.01464 9.75642,1.77944 9.49203,1.58028 7.73742,0.265621 5.81629,-0.0313909 3.79558,0.814149 1.77101,1.66355 0.650343,3.25677 0.373504,5.4277 0.328437,5.78438 0.215985,6.30415 0.780822,6.35136 1.28943,6.39299 1.24093,5.93288 1.28257,5.56934L1.283,5.56977z" />
+                    </DrawingGroup>
+                </DrawingImage.Drawing>
+            </DrawingImage>
+            <Style x:Key="AnimationImage"
+                   TargetType="{x:Type Image}">
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <RotateTransform Angle="0"
+                                         CenterX="25"
+                                         CenterY="25" />
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsEnabled"
+                             Value="true">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard x:Name="AnimationBeginStoryboard">
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle"
+                                                     From="0"
+                                                     To="360"
+                                                     Duration="0:0:1.5"
+                                                     RepeatBehavior="Forever" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <RemoveStoryboard BeginStoryboardName="AnimationBeginStoryboard" />
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+        
+    </UserControl.Resources>
+    <Grid>
+        <Grid Background="LightGray"
+              Opacity="0.8"></Grid>
+        <Image Grid.Column="2"
+               Width="50"
+               Height="50"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               IsEnabled="{Binding IsRunning, ElementName=self}"
+               Style="{StaticResource AnimationImage}"
+               Source="{StaticResource LoaderDrawingImage}"></Image>
+    </Grid>
+</UserControl>
+

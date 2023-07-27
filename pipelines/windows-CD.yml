@@ -1,0 +1,119 @@
+trigger:
+  branches:
+    include:
+    - main
+    - develop
+  paths:
+   include:
+    - src/Desktop/Freya
+    - src/Desktop/Freya.Desktop.Core
+    - src/Desktop/Freya.Desktop.Dialogs
+    - src/Desktop/Freya.Desktop.Localization
+    - src/Desktop/Freya.Desktop.Updater
+    - src/Common/ApiContract
+    - src/Common/AppCenterServices    
+    - src/Common/Models.Core
+    - src/Common/UploaderWasabi
+    - pipelines/windows-CD.yml   
+
+parameters:
+- name: AppVersion
+  displayName: App Version (ej. 1.2)
+  default: 1.1
+  type: string
+
+pool:
+  vmImage: 'windows-2022'
+
+variables:
+  - group: blobstorage
+  - group: net-versions
+  - name: solution
+    value: 'Freya.sln'
+  - name: csproj
+    value: 'src/Desktop/Freya/Freya.csproj'    
+  - name: buildPlatform
+    value: 'Any CPU'
+  - name: outputFolder
+    value: $(Build.BinariesDirectory)
+  - name: appVersionShort
+    value: ${{parameters.AppVersion}}
+  - name: appVersionBuild
+    value: $[counter(variables.appVersionShort, 1000)]  
+
+jobs:
+- job: Version
+  steps:
+    - checkout: none
+    - pwsh: |
+          Write-Host "##vso[task.setvariable variable=appVersion;isoutput=true]$(appVersionShort).$(appVersionBuild)"
+          If ("$(Build.SourceBranch)" -eq "refs/heads/main") {
+            Write-Host "##vso[build.updatebuildnumber]$(appVersionShort).$(appVersionBuild) Pro"
+          }else {
+            Write-Host "##vso[build.updatebuildnumber]$(appVersionShort).$(appVersionBuild) Dev"
+          }
+          $variable = '$(appVersionShort).$(appVersionBuild)'
+          $variable | Out-File $(Build.ArtifactStagingDirectory)\projectversion.txt
+          Get-Content $(Build.ArtifactStagingDirectory)\projectversion.txt
+      name: UpdatePipeplieName
+      displayName: 'set pipeline name'
+    
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+
+- job: Build
+  dependsOn: Version
+  variables:
+    appVersion: $[ dependencies.Version.outputs['UpdatePipeplieName.appVersion'] ]
+  steps:
+    - template: templates/windows-build-CD.yml
+      parameters: 
+        csproj: 'src/Desktop/Freya/Freya.csproj' 
+        appVersion: $(appVersion)
+        outputFolder: $(Build.BinariesDirectory)
+        projectName: Freya
+        nsinsScript: $(Build.SourcesDirectory)/src/Desktop/NSISInstaller/installerScript_x64.nsi
+        netSDK: '$(net-7)'
+
+- job: UploadToDev
+  dependsOn: 
+    - Version
+    - Build
+  condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/develop'))
+  variables:
+    appVersion: $[ dependencies.Version.outputs['UpdatePipeplieName.appVersion'] ]
+  steps:
+    - task: DownloadBuildArtifacts@0
+      displayName: 'Download Build Artifacts'
+      inputs:
+        artifactName: drop
+        downloadPath: $(System.DefaultWorkingDirectory)
+    - task: PowerShell@2
+      displayName: Upload version to blob
+      inputs:
+        targetType: 'filePath'
+        filePath: '$(System.DefaultWorkingDirectory)\pipelines\UploadVersion.ps1'
+        arguments: " -filePath 'drop/Freya.zip' -appVersion '$(appVersion)' -blobUrl '$(blobUrlDevelopment)' -sasToken '$(sasToken)' "
+
+- job: UploadToPro
+  dependsOn: 
+    - Version
+    - Build
+  condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/main'))
+  variables:
+    appVersion: $[ dependencies.Version.outputs['UpdatePipeplieName.appVersion'] ]
+  steps:
+    - task: DownloadBuildArtifacts@0
+      displayName: 'Download Build Artifacts'
+      inputs:
+        artifactName: drop
+        downloadPath: $(System.DefaultWorkingDirectory)
+    - task: PowerShell@2
+      displayName: Upload version to blob
+      inputs:
+        targetType: 'filePath'
+        filePath: '$(System.DefaultWorkingDirectory)\pipelines\UploadVersion.ps1'
+        arguments: " -filePath 'drop/Freya.zip' -appVersion '$(appVersion)' -blobUrl '$(blobUrlProduction)' -sasToken '$(sasToken)' "

@@ -1,0 +1,149 @@
+﻿<UserControl x:Class="Freya.Desktop.Core.Controls.TextBoxWithPlaceHolder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             x:Name="self"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid UIElement.PreviewMouseUp="OnMouseUp">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="{Binding ElementName=self, Path=Title}"
+                       FontSize="{DynamicResource H7FontSize}"
+                       Margin="1"
+                       FontFamily="{DynamicResource RobotoRegular}"
+                       FontWeight="Regular"
+                       Foreground="{DynamicResource textDarkColorBrush}" />
+            <Grid>
+                <Border CornerRadius="4"
+                        x:Name="borderBackground"
+                        VerticalAlignment="Stretch"
+                        MinHeight="43">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=textBox, Path=IsFocused}"
+                                             Value="true">
+                                    <Setter Property="Background"
+                                            Value="{DynamicResource secondary2ColorBrush}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=textBox, Path=IsFocused}"
+                                             Value="false">
+                                    <Setter Property="Background"
+                                            Value="{Binding TextBoxBackground, ElementName=self, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                </Border>
+                <Grid Margin="16,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0"
+                           Width="27"
+                           Height="27"
+                           Margin="0,0,8,0"
+                           VerticalAlignment="Center"
+                           Source="{Binding ElementName=self, Path=SVGSource}"
+                           Visibility="{Binding ElementName=self, Path=SVGSource, Converter={StaticResource NullToVisibilityConverter}}" />
+                    <TextBox VerticalAlignment="Center"
+                             x:Name="textBox"
+                             BorderThickness="0"
+                             HorizontalAlignment="Stretch"
+                             Background="Transparent"
+                             TextWrapping="{Binding ElementName=self, Path=TextWrapping}" 
+                             IsReadOnly="{Binding ElementName=self, Path=IsReadOnly}"
+                             Grid.Column="1"
+                             VerticalContentAlignment="Center"
+                             Text="{Binding Text, ElementName=self, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                             Foreground="{DynamicResource textDarkColorBrush}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox"
+                                   BasedOn="{StaticResource {x:Type TextBox}}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=self, Path=IsInPasswordMode}"
+                                                 Value="True">
+                                        <Setter Property="FontFamily"
+                                                Value="{DynamicResource Password}" />
+                                        <Setter Property="FontWeight"
+                                                Value="Normal" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=self, Path=IsInPasswordMode}"
+                                                 Value="false">
+                                        <Setter Property="FontFamily"
+                                                Value="{DynamicResource RobotoRegular}" />
+                                        <Setter Property="FontWeight"
+                                                Value="Regular" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                    <TextBlock Grid.Column="1"
+                               IsHitTestVisible="False"
+                               Text="{Binding PlaceHolder, ElementName=self}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="0,0,0,0"
+                               FontFamily="{DynamicResource RobotoRegular}"
+                               FontSize="{DynamicResource H6FontSize}"
+                               FontWeight="Regular"
+                               Opacity="0.5"
+                               Foreground="{StaticResource textDarkColorBrush}">
+                        <TextBlock.Style>
+                            <Style  TargetType="{x:Type TextBlock}"
+                                    BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility"
+                                        Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=textBox, FallbackValue='Placeholder'}"
+                                                 Value="">
+                                        <Setter Property="Visibility"
+                                                Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style></TextBlock>
+                    <Image HorizontalAlignment="Center"
+                           Name="endSVGImage"
+                           Width="27"
+                           Grid.Column="2"
+                           Height="27"
+                           VerticalAlignment="Center"
+                           Source="{Binding ElementName=self, Path=EndSVG}"
+                           Visibility="{Binding ElementName=self, Path=EndSVG, Converter={StaticResource NullToVisibilityConverter}}"></Image>
+                    <Button Style="{DynamicResource NoHoverStyle}"
+                            Grid.Column="2"
+                            Visibility="{Binding ElementName=self, Path=IsPassword, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Background="Transparent"
+                            Click="ChangeStateClick"
+                            BorderThickness="0"
+                            Margin="8,0,0,0">
+                        <Grid>
+                            <Grid>
+                                <Image HorizontalAlignment="Center"
+                                       Width="27"
+                                       Height="27"
+                                       x:Name="closedEyeImage"
+                                       VerticalAlignment="Center"
+                                       Source="{StaticResource EyeClosedDrawingImage}"
+                                       Visibility="{Binding ElementName=self, Path=IsInPasswordMode,Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <Image HorizontalAlignment="Center"
+                                       Width="27"
+                                       Height="27"
+                                       VerticalAlignment="Center"
+                                       x:Name="openEyeImage"
+                                       Source="{StaticResource EyeDrawingImage}"
+                                       Visibility="{Binding ElementName=self, Path=IsInPasswordMode, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=inverse}" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

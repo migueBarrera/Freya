@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<AssemblyName>Freya.Desktop.Core</AssemblyName>
+		<OutputType>library</OutputType>
+		<WarningsAsErrors>Nullable</WarningsAsErrors>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Resource Include="Resources\password.ttf" />
+		<Resource Include="Resources\RobotoBold.ttf">
+		</Resource>
+		<Resource Include="Resources\Roboto-BoldItalic.ttf">
+		</Resource>
+		<Resource Include="Resources\Roboto-Italic.ttf">
+		</Resource>
+		<Resource Include="Resources\Roboto-Medium.ttf">
+		</Resource>
+		<Resource Include="Resources\Roboto-MediumItalic.ttf">
+		</Resource>
+		<Resource Include="Resources\Roboto-Regular.ttf">
+		</Resource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CSharp.OperationResult" Version="0.1.6" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Refit" Version="6.3.2" />
+		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Common\ApiContract\ApiContract.csproj" />
+	  <ProjectReference Include="..\..\Common\AppCenterServices\AppCenterServices.csproj" />
+	  <ProjectReference Include="..\..\Common\Freya.Localization.Abstractions\Freya.Localization.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\Common\Models.Core\Models.Core.csproj" />
+	  <ProjectReference Include="..\Freya.Desktop.Dialogs\Freya.Desktop.Dialogs.csproj" />
+	  <ProjectReference Include="..\Freya.Desktop.Updater\Freya.Desktop.Updater.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Controls\TextBoxWithPlaceHolder.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Page Update="Controls\TextBoxWithPlaceHolder.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<SubType>Designer</SubType>
+		</Page>
+	</ItemGroup>
+
+</Project>

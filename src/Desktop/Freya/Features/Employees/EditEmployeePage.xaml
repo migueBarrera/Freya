@@ -1,0 +1,65 @@
+﻿<core:CorePage x:Class="Freya.Features.Employees.EditEmployeePage"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:local="clr-namespace:Freya.Features.Employees"
+               Background="{StaticResource secondary2ColorBrush}"
+               xmlns:core="clr-namespace:Freya.Desktop.Core.Framework;assembly=Freya.Desktop.Core"
+               mc:Ignorable="d"
+               xmlns:trans="clr-namespace:Freya.Desktop.Localization.Services;assembly=Freya.Desktop.Localization"
+               xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+               d:DesignHeight="450"
+               d:DesignWidth="800"
+               Title="EditEmployeePage">
+    <ScrollViewer>
+        <Grid>
+            <Border Style="{DynamicResource BorderCardStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{trans:Translate edit_data_of_employee}"
+                               FontSize="{StaticResource H3FontSize}"
+                               FontFamily="{StaticResource RobotoMedium}"
+                               Margin="0,0,0,16"
+                               HorizontalAlignment="Left"
+                               Foreground="{StaticResource primary1ColorBrush}" />
+                    <StackPanel Orientation="Vertical"
+                                Grid.Row="1">
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="{trans:Translate email}"
+                                                         Title="{trans:Translate email}"
+                                                         IsEnabled="False"
+                                                         Text="{Binding EditEmployeeModel.EmployeeEmail, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="{trans:Translate name}"
+                                                         Title="{trans:Translate name}"
+                                                         Text="{Binding EditEmployeeModel.EmployeeName, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="{trans:Translate surname}"
+                                                         Title="{trans:Translate surname}"
+                                                         Text="{Binding EditEmployeeModel.EmployeeLastName, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right"
+                                Grid.Row="2"
+                                Orientation="Horizontal">
+                        <Button Content="{trans:Translate cancel}"
+                                Style="{StaticResource MediumTertiaryButton}"
+                                Command="{Binding BackCommand}"
+                                HorizontalAlignment="Center"
+                                MinWidth="150"
+                                Margin="0,0,12,0" />
+                        <Button Content="{trans:Translate save_changes}"
+                                Style="{StaticResource MediumPrimaryButton}"
+                                Command="{Binding SaveChangesEditEmployeeCommand}"
+                                HorizontalAlignment="Center"
+                                MinWidth="150" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</core:CorePage>

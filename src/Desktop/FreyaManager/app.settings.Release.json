@@ -1,0 +1,12 @@
+{
+  "IsProductionEvironment": true,
+  "ServerUri": "https://apifreyafertility.com/",
+  "Data": {
+    "AppUpdateUrl": "https://mibebetestmbmdevelop.blob.core.windows.net/production/FreyaManager.zip"
+  },
+  "AppCenter": {
+    "Secret": "YOUR_KEY",
+    "IsEnabledAnalitics": true,
+    "IsEnabledCrashes": true
+  }
+}

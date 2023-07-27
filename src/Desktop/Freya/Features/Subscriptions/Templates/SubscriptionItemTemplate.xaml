@@ -1,0 +1,172 @@
+﻿<UserControl x:Class="Freya.Features.Subscriptions.Templates.SubscriptionItemTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Freya.Features.Subscriptions"
+             mc:Ignorable="d" 
+             xmlns:trans="clr-namespace:Freya.Desktop.Localization.Services;assembly=Freya.Desktop.Localization"         
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Style="{StaticResource BorderItemCardStyle}"
+            Padding="0"
+            Width="250"
+            Height="385"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical">
+            <Border CornerRadius="4,4,0,0"
+                    MinHeight="140"
+                    Padding="16"
+                    HorizontalAlignment="Stretch"
+                    Background="{DynamicResource primary4ColorBrush}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="130" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{Binding Data.Name}"
+                               d:Text="Básico"
+                               TextWrapping="Wrap"
+                               TextTrimming="CharacterEllipsis"
+                               FontSize="{DynamicResource H5FontSize}"
+                               FontWeight="Medium"
+                               FontFamily="{DynamicResource RobotoMedium}"
+                               Foreground="{DynamicResource textDarkColorBrush}"
+                               HorizontalAlignment="Left" />
+                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Data.AmountMonthly, Converter={StaticResource CentsToEurConverters}}"
+                                   d:Text="9"
+                                   Margin="0,0,1,0"
+                                   FontSize="{DynamicResource H6FontSize}"
+                                   FontWeight="Medium"
+                                   FontFamily="{DynamicResource RobotoMedium}"
+                                   Foreground="{DynamicResource textDarkColorBrush}" />
+                            <TextBlock Text="{Binding Data.Currency}"
+                                   d:Text="€"
+                                   FontSize="{DynamicResource H6FontSize}"
+                                   FontWeight="Regular"
+                                   FontFamily="{DynamicResource RobotoRegular}"
+                                   Foreground="{DynamicResource textDarkColorBrush}" />
+                            <TextBlock Text="{trans:Translate payment_product_info_month}"
+                                   FontSize="{DynamicResource H6FontSize}"
+                                   FontWeight="Regular"
+                                   FontFamily="{DynamicResource RobotoRegular}"
+                                   Foreground="{DynamicResource textDarkColorBrush}" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="IVA"
+                                   FontSize="{DynamicResource H7FontSize}"
+                                   FontWeight="Regular"
+                                   FontFamily="{DynamicResource RobotoItalic}"
+                                   Foreground="{DynamicResource textColorBrush}" />
+                            <TextBlock 
+                                Text="inc."
+                                Margin="4,0"
+                                FontSize="{DynamicResource H7FontSize}"
+                                FontWeight="Regular"
+                                FontFamily="{DynamicResource RobotoItalic}"
+                                Foreground="{DynamicResource textColorBrush}" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2"
+                                  Margin="0,12,0,0" VerticalScrollBarVisibility="Auto">
+                        <TextBlock Text="{Binding Data.Description}"
+                               d:Text="Esta es la descripción del producto pero soy muy largar y puedo contener algun scroll "
+                               FontSize="{DynamicResource H6FontSize}"
+                               FontWeight="Regular"
+                               TextWrapping="Wrap"
+                               FontFamily="{DynamicResource RobotoRegular}"
+                               Foreground="{DynamicResource textDarkColorBrush}"
+                               Margin="0,0,4,0"
+                               HorizontalAlignment="Left" />
+                    </ScrollViewer>
+                    
+                </Grid>
+            </Border>
+            <Grid Background="White"
+                        MinHeight="170"
+                        HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Margin="0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{DynamicResource SizeIcon}"
+                           Width="24"
+                           Margin="12,0,4,0"
+                           Height="24" />
+                    <TextBlock Text="{Binding Size}"
+                               FontWeight="Regular"
+                               TextWrapping="Wrap"
+                               Grid.Column="1"
+                               Margin="0,0,24,0"
+                               FontFamily="{DynamicResource RobotoRegular}"
+                               FontSize="{DynamicResource H7FontSize}"
+                               VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Row="1" Margin="0,0,0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{DynamicResource DevicesIcon}"
+                           Width="24"
+                           Margin="12,0,4,0"
+                           Height="24" />
+                    <TextBlock Text="{trans:Translate payment_product_info_row_phone}"
+                               FontWeight="Regular"
+                               TextWrapping="Wrap"
+                               Grid.Column="1"
+                               Margin="0,0,24,0"
+                               FontFamily="{DynamicResource RobotoRegular}"
+                               FontSize="{DynamicResource H7FontSize}"
+                               VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Row="2"
+                      Margin="0,0,0,16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{DynamicResource SupportIcon}"
+                           Width="24"
+                           Margin="12,0,4,0"
+                           Height="24" />
+                    <TextBlock Text="{trans:Translate payment_product_info_row_support}"
+                               FontWeight="Regular"
+                               TextWrapping="Wrap"
+                               Grid.Column="1"
+                               Margin="0,0,24,0"
+                               FontFamily="{DynamicResource RobotoRegular}"
+                               FontSize="{DynamicResource H7FontSize}"
+                               VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Row="3" >
+                    <Button Style="{StaticResource MediumPrimaryButton}"
+                            Margin="0,0,0,8"
+                            Grid.Row="1"
+                            IsEnabled="{Binding IsSubscriptionActive, Converter={StaticResource InverterBooleanConverter}}"
+                            Command="{Binding GoToCheckoutCommand}"
+                            CommandParameter="{Binding Data}"
+                            VerticalAlignment="Bottom"
+                            Content="{trans:Translate payment_product_button_buy}"></Button>
+                </Grid>
+              
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

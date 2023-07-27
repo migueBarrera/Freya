@@ -1,0 +1,173 @@
+﻿<UserControl x:Class="Freya.Features.Main.LateralMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Freya.Features.Main"
+             mc:Ignorable="d"
+             xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+             x:Name="self"
+             xmlns:trans="clr-namespace:Freya.Desktop.Localization.Services;assembly=Freya.Desktop.Localization"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid>
+        <d:Grid.DataContext>
+            <local:LateralMenuViewModelForDesing IsMenuVisible="True" />
+        </d:Grid.DataContext>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Visibility="{Binding IsMenuVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+              Background="White">
+            <StackPanel Background="{StaticResource primary1ColorBrush}"
+                        MinWidth="240">
+                <Grid Height="60"
+                      UIElement.TouchUp="Grid_TouchUp"
+                      UIElement.MouseUp="Grid_MouseUp">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <!--<Image Source="{StaticResource WorkforceDrawingImage}"
+                       Margin="16,20" />-->
+                    <StackPanel Orientation="Vertical"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="16,0,0,0">
+                        <TextBlock Text="{trans:Translate app_name}"
+                                   FontSize="{StaticResource H3FontSize}"
+                                   FontFamily="{StaticResource RobotoBold}"
+                                   Foreground="White"
+                                   Margin="0,0,0,0" />
+                    </StackPanel>
+                    <!--<controls:IconButtonControl ImageSource="{StaticResource MenuOpenIcon}"
+                                                Style="{StaticResource MediumPrimaryStyleIconButton}"
+                                                Margin="8,0"
+                                                Grid.Column="1" />-->
+                    <Image Source="{StaticResource MenuOpenIcon}"
+                           Grid.Column="1"
+                           Width="24"
+                           Margin="16,0" />
+                </Grid>
+                <controls:TextImageButton Text="{trans:Translate menu_clients}"
+                                          HorizontalAlignment="Left"
+                                          Margin="16,24,16,0"
+                                          Width="200"
+                                          HorizontalContentAlignment="Left"
+                                          ImageWidth="32"
+                                          FontSize="20"
+                                          Style="{StaticResource MediumPrimaryButton}"
+                                          StartImageSource="{StaticResource PeopleWhite}"
+                                          Command="{Binding GoToClientsCommand }" />
+                <controls:TextImageButton Text="{trans:Translate menu_clinics}"
+                                          HorizontalAlignment="Left"
+                                          HorizontalContentAlignment="Left"
+                                          Margin="16,24,16,0"
+                                          Width="200"
+                                          ImageWidth="32"
+                                          FontSize="20"
+                                          Style="{StaticResource MediumPrimaryButton}"
+                                          Visibility="{Binding CanManageCompany, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                          StartImageSource="{StaticResource HomeWhite}"
+                                          Command="{Binding GoToClinicsCommand }" />
+                <controls:TextImageButton Text="{trans:Translate menu_clinic}"
+                                          Margin="16,24,16,0"
+                                          ImageWidth="32"
+                                          HorizontalContentAlignment="Left"
+                                          HorizontalAlignment="Left"
+                                          Width="200"
+                                          Style="{StaticResource MediumPrimaryButton}"
+                                          FontSize="20"
+                                          Visibility="{Binding CanManageCompany, Converter={StaticResource BooleanToVisibilityConverter},ConverterParameter=inverter}"
+                                          StartImageSource="{StaticResource HomeWhite}"
+                                          Command="{Binding GoToClinicDetailCommand }" />
+                <controls:TextImageButton Text="{trans:Translate menu_settings}"
+                                          HorizontalContentAlignment="Left"
+                                          HorizontalAlignment="Left"
+                                          Width="200"
+                                          Margin="16,24,16,0"
+                                          ImageWidth="32"
+                                          Style="{StaticResource MediumPrimaryButton}"
+                                          FontSize="20"
+                                          StartImageSource="{StaticResource SettingsWhite}"
+                                          Command="{Binding GoToSettingsCommand }" />
+                <controls:TextImageButton Text="{trans:Translate menu_faqs}"
+                                          HorizontalContentAlignment="Left"
+                                          HorizontalAlignment="Left"
+                                          Width="200"
+                                          Margin="16,24,0,0"
+                                          ImageWidth="32"
+                                          Style="{StaticResource MediumPrimaryButton}"
+                                          FontSize="20"
+                                          StartImageSource="{StaticResource faq_white}"
+                                          Command="{Binding GoToFAQsCommand }" />
+            </StackPanel>
+            <Grid VerticalAlignment="Bottom"
+                  Margin="16,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Button Style="{DynamicResource MediumPrimaryButton}"
+                        HorizontalContentAlignment="Left"
+                        Padding="8,0"
+                        Command="{Binding SeeProfileCommand}"
+                        MinHeight="60">
+                    <StackPanel Orientation="Vertical"
+                                HorizontalAlignment="Left">
+                        <TextBlock Text="{Binding Employee}"
+                                   FontSize="{StaticResource H6FontSize}"
+                                   Margin="0,0,0,4"
+                                   TextWrapping="WrapWithOverflow"
+                                   Foreground="White" />
+                        <TextBlock Text="{Binding Employee.Rol, Converter={StaticResource EmployeeRolToNameConverter}}"
+                                   FontSize="{StaticResource H7FontSize}"
+                                   Foreground="White" />
+                    </StackPanel>
+                </Button>
+                <controls:IconButtonControl ImageSource="{StaticResource LogoutWhite}"
+                                            VerticalAlignment="Center"
+                                            Command="{Binding CloseSessionCommand}"
+                                            Style="{StaticResource SmallPrimaryStyleIconButton}"
+                                            Grid.Column="1" />
+            </Grid>
+            <TextBlock d:Text="1.0.0"
+                       x:Name="VersionTag"
+                       HorizontalAlignment="Left"
+                       Margin="4"
+                       Visibility="Collapsed"
+                       VerticalAlignment="Bottom" />
+        </Grid>
+        <Grid Visibility="{Binding IsMenuVisible,Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=inverse}"
+              Height="60"
+              VerticalAlignment="Top">
+            <Image Source="{StaticResource MenuIcon}"
+                   Visibility="{Binding ShowBackButton,ElementName=self,Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=inverse}"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   UIElement.TouchUp="Grid_TouchUp"
+                   Margin="0,5,0,0"
+                   UIElement.MouseUp="Grid_MouseUp"
+                   Height="55" />
+            <Grid Height="60"
+                  Width="60"
+                  Visibility="{Binding ShowBackButton,ElementName=self,Converter={StaticResource BooleanToVisibilityConverter}}"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Center"
+                  UIElement.TouchUp="Grid_back_TouchUp"
+                  UIElement.MouseUp="Grid_back_MouseUp">
+                <Image Source="{StaticResource BackIcon}"
+                       Width="45"
+                       Height="45" />
+            </Grid>
+        </Grid>
+        <Grid Background="{DynamicResource disabledColorBrush}"
+              Grid.Column="1"
+              Visibility="{Binding IsMenuVisible,Converter={StaticResource BooleanToVisibilityConverter}}"
+              VerticalAlignment="Stretch"
+              HorizontalAlignment="Stretch"
+              UIElement.TouchUp="Grid_TouchUp"
+              UIElement.MouseUp="Grid_MouseUp" />
+    </Grid>
+</UserControl>

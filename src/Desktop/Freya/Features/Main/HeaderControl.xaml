@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="Freya.Features.Main.HeaderControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Freya.Features.Main"
+             mc:Ignorable="d"
+             x:Name="self"
+                   xmlns:trans="clr-namespace:Freya.Desktop.Localization.Services;assembly=Freya.Desktop.Localization"   
+             Background="Transparent"
+             xmlns:internalControl="clr-namespace:Controls"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Border Background="White"
+            Padding="0"
+            Grid.Row="0"
+            Grid.Column="1">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="8"
+                              Opacity=".4"
+                              ShadowDepth="0"
+                              Color="Black" />
+        </Border.Effect>
+        <Grid Height="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding Title, ElementName=self}"
+                       VerticalAlignment="Center"
+                       Foreground="{StaticResource textColorBrush}"
+                       HorizontalAlignment="Left"
+                       FontFamily="{DynamicResource RobotoMedium}"
+                       FontWeight="Medium"
+                       FontSize="24"
+                       Margin="75,0,0,0" />
+            <ComboBox HorizontalAlignment="Right"
+                      ItemsSource="{Binding Clinics}"
+                      Margin="0,0,35,0"
+                      Visibility="{Binding ShowClinicSelector,ElementName=self, Converter={StaticResource BooleanToVisibilityConverter}}"
+                      SelectedItem="{Binding CurrentClinic}"
+                      VerticalAlignment="Center" />
+            <Grid Grid.Column="1"
+                  Background="#EAEAEA"
+                  Margin="0,2"
+                  Width="1" />
+            <Grid Grid.Column="2"
+                  Width="72">
+                <Border Background="{DynamicResource primary3ColorBrush}"
+                        CornerRadius="10"
+                        Width="20"
+                        Height="20"
+                        Margin="16,0,0,0"
+                        HorizontalAlignment="Left"
+                        Visibility="{Binding CountUploads, Converter={StaticResource IsZeroValueToVisibilityConverter}, ConverterParameter=inverter}"
+                        VerticalAlignment="Top">
+                    <TextBlock Text="{Binding CountUploads}"
+                               d:Text="1"
+                               FontFamily="{DynamicResource RobotoMedium}"
+                               FontWeight="Medium"
+                               Foreground="White"
+                               FontSize="{StaticResource H7FontSize}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+                </Border>
+                <Image Source="{StaticResource UploadIcon}"
+                       Width="26"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       MouseEnter="Image_MouseEnter"
+                       Height="26">
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CountUploads}"
+                                             Value="0">
+                                    <Setter Property="Opacity"
+                                            Value="0.4" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Popup PopupAnimation="Fade"
+                       Placement="Mouse"
+                       AllowsTransparency="True"
+                       StaysOpen="False"
+                       x:Name="TooltipPopup">
+                    <Border Background="{DynamicResource secondary5ColorBrush}"
+                            CornerRadius="4"
+                            BorderThickness="0"
+                            MinHeight="40"
+                            MaxHeight="500"
+                            MinWidth="200"
+                            MaxWidth="400">
+                        <Grid>
+                            <TextBlock Text="{trans:Translate download_menu_no_current_downloads}"
+                                       HorizontalAlignment="Center"
+                                       FontFamily="{DynamicResource RobotoItalic}"
+                                       FontSize="{StaticResource H6FontSize}"
+                                       Foreground="{DynamicResource primary1ColorBrush}"
+                                       VerticalAlignment="Center"
+                                       Visibility="{Binding CountUploads, Converter={StaticResource IsZeroValueToVisibilityConverter}}" />
+                            <internalControl:ListUploadingControl ItemsSource="{Binding UploadsItems}"
+                                                                  Visibility="{Binding CountUploads, Converter={StaticResource IsZeroValueToVisibilityConverter}, ConverterParameter=inverter}" />
+                        </Grid>
+                        
+                    </Border>
+                </Popup>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

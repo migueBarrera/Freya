@@ -1,0 +1,36 @@
+﻿<Grid x:Class="Freya.Desktop.Core.Controls.IconTextControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Freya.Desktop.Core.Controls"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:Name="self">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+    <Image Source="{Binding ElementName=self, Path=StartImageSource}"
+           Width="{Binding ElementName=self, Path=ImageWidth, FallbackValue=49}"
+           Visibility="{Binding ElementName=self, Path=StartImageSource, Converter={StaticResource NullToVisibilityConverter}}"
+           VerticalAlignment="Center"
+           HorizontalAlignment="Left" />
+    <TextBlock Text="{Binding ElementName=self, Path=Text, FallbackValue='Some text with spaces'}"
+               Margin="16,0"
+               FontSize="{Binding ElementName=self, Path=FontSize}"
+               Grid.Column="1"
+               HorizontalAlignment="Left"
+               TextWrapping="Wrap"
+               VerticalAlignment="Center"
+               FontFamily="{Binding ElementName=self, Path=FontFamily}" />
+    <Image Source="{Binding ElementName=self, Path=EndImageSource}"
+           Width="{Binding ElementName=self, Path=ImageWidth, FallbackValue=49}"
+           Visibility="{Binding ElementName=self, Path=EndImageSource, Converter={StaticResource NullToVisibilityConverter}}"
+           VerticalAlignment="Center"
+           HorizontalAlignment="Left"
+           Grid.Column="2" />
+    </Grid>
+

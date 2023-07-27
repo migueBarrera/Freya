@@ -1,0 +1,71 @@
+﻿<core:CorePage x:Class="FreyaManager.Features.Clinics.CreateClinicPage"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:core="clr-namespace:Freya.Desktop.Core.Framework;assembly=Freya.Desktop.Core"
+               xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+               mc:Ignorable="d"
+               d:DesignHeight="850"
+               d:DesignWidth="1200"
+               Style="{StaticResource PageStyle}"
+               Title="CreateClinicPage">
+    <ScrollViewer>
+        <Grid>
+            <Border Style="{DynamicResource BorderCardStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Nueva clinica"
+                               FontSize="{StaticResource H3FontSize}"
+                               FontFamily="{StaticResource RobotoMedium}"
+                               Margin="0,0,0,16"
+                               HorizontalAlignment="Left"
+                               Foreground="{StaticResource primary1ColorBrush}" />
+                    <StackPanel Orientation="Vertical"
+                                Grid.Row="1">
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="Nombre de la clínica"
+                                                         Title="Nombre"
+                                                         Text="{Binding NewClinicModel.Name, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="NIF"
+                                                         Title="NIF empresa"
+                                                         Text="{Binding NewClinicModel.NIF, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="Dirección"
+                                                         Title="Dirección de clínica"
+                                                         Text="{Binding NewClinicModel.Adress, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="Email"
+                                                         Title="Email informativo"
+                                                         Text="{Binding NewClinicModel.Phone, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="Teléfono"
+                                                         Title="Teléfono informativo"
+                                                         Text="{Binding NewClinicModel.Email, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right"
+                                Grid.Row="2"
+                                Orientation="Horizontal">
+                        <Button Content="Cancelar"
+                                Style="{StaticResource MediumTertiaryButton}"
+                                Command="{Binding BackCommand}"
+                                HorizontalAlignment="Center"
+                                MinWidth="150"
+                                Margin="0,0,12,0" />
+                        <Button Content="Añadir clínica"
+                                Style="{StaticResource MediumPrimaryButton}"
+                                Command="{Binding CreateClinicCommand}"
+                                HorizontalAlignment="Center"
+                                MinWidth="150" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+  
+</core:CorePage>

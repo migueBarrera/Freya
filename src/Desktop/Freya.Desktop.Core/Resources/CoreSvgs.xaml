@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DrawingImage x:Key="arrowDownImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V48 H48 V0 H0 Z">
+                <GeometryDrawing Brush="{DynamicResource secondary5ColorBrush}"
+                                 Geometry="F1 M48,48z M0,0z M22.95,28.95L16.6,22.6Q15.9,21.9 16.275,20.975 16.65,20.05 17.65,20.05L30.35,20.05Q31.35,20.05 31.725,20.975 32.1,21.9 31.4,22.6L25.05,28.95Q24.8,29.2 24.55,29.3 24.3,29.4 24,29.4 23.7,29.4 23.45,29.3 23.2,29.2 22.95,28.95z" />
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="arrowUpImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V48 H48 V0 H0 Z">
+                <GeometryDrawing Brush="{DynamicResource primary1ColorBrush}"
+                                 Geometry="F1 M48,48z M0,0z M17.65,28Q16.65,28 16.275,27.075 15.9,26.15 16.6,25.45L23,19Q23.25,18.75 23.5,18.675 23.75,18.6 24.05,18.6 24.35,18.6 24.6,18.675 24.85,18.75 25.1,19L31.5,25.45Q32.2,26.15 31.825,27.075 31.45,28 30.45,28z" />
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="arrowLeftImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V48 H48 V0 H0 Z">
+                <GeometryDrawing Brush="{DynamicResource secondary1ColorBrush}" Geometry="F1 M48,48z M0,0z M28.05,36L16,23.95 28.05,11.9 30.2,14.05 20.3,23.95 30.2,33.85z" />
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="arrowRightImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V48 H48 V0 H0 Z">
+                <GeometryDrawing Brush="{DynamicResource secondary2ColorBrush}" Geometry="F1 M48,48z M0,0z M18.75,36L16.6,33.85 26.5,23.95 16.6,14.05 18.75,11.9 30.8,23.95z" />
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+</ResourceDictionary>

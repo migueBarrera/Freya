@@ -1,0 +1,25 @@
+﻿<Application x:Class="FreyaManager.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:Freya.Desktop.Core.Converters;assembly=Freya.Desktop.Core">
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <converters:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter" />
+            <converters:EmployeeRolToNameConverter x:Key="EmployeeRolToNameConverter" />
+            <converters:InverterBooleanConverter x:Key="InverterBooleanConverter" />
+            <converters:ListAnyItemToVisibilityConverter x:Key="ListAnyItemToVisibilityConverter" />
+            <converters:SizeToTextConverter x:Key="SizeToTextConverter" />
+            <converters:IsZeroValueToVisibilityConverter x:Key="IsZeroValueToVisibilityConverter" />
+            <converters:CentsToEurConverters x:Key="CentsToEurConverters" />
+            <converters:StringToPhoneConverter x:Key="StringToPhoneConverter" />
+            <FontFamily x:Key="Password">Resources/password.ttf#Password</FontFamily>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Freya.Desktop.Core;component/Resources/CoreResources.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Freya.Desktop.Dialogs;component/Theme.xaml" />
+                <ResourceDictionary Source="Resources\SVGs.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

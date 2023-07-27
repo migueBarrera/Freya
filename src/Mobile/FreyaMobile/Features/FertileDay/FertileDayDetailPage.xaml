@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<core:CorePage xmlns:core="clr-namespace:FreyaMobile.Core.Framework;assembly=FreyaMobile.Core"
+               xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="FreyaMobile.Features.FertileDay.FertileDayDetailPage"
+               Title="FertileDayDetailPage">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label Margin="32"
+                   Style="{StaticResource TitleDetailStyle}"
+                   Text="Días fertiles" />
+            <StackLayout Margin="0,0,0,32">
+                <Label Margin="16,0"
+                       Style="{StaticResource SubTitleDetailStyle}"
+                       Text="Tus dias fertiles aproximados" />
+                <Grid Padding="8"
+                      BackgroundColor="LightPink"
+                      ColumnDefinitions="*,*"
+                      RowDefinitions="auto,auto">
+                    <Label HorizontalTextAlignment="Center"
+                           Text="Fecha último periodo" />
+                    <Label Grid.Column="1"
+                           HorizontalTextAlignment="Center"
+                           Text="Duración del ciclo" />
+                    <Label Grid.Row="1"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding FertyleDays.StartLastPeriod, StringFormat='{0:MMMM d, yyyy}'}" />
+                    <Label Grid.Row="1"
+                           Grid.Column="1"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding FertyleDays.CicleDays}" />
+                </Grid>
+            </StackLayout>
+            <StackLayout>
+                <Label Margin="16,0"
+                       FontAttributes="Bold"
+                       FontSize="14"
+                       Text="Tus días fertiles son:" />
+                <StackLayout BackgroundColor="LightGreen"
+                             BindableLayout.ItemsSource="{Binding FertyleDays.FertyleDays}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Label Margin="16,8"
+                                   FontAttributes="Italic"
+                                   Text="{Binding ., StringFormat='{0:d MMMM}'}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</core:CorePage>

@@ -1,0 +1,238 @@
+﻿<core:CorePage x:Class="FreyaManager.Features.Companies.DetailCompanyPage"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               mc:Ignorable="d"
+               xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+               xmlns:templates="clr-namespace:FreyaManager.Features.Companies.Templates"
+               xmlns:core="clr-namespace:Freya.Desktop.Core.Framework;assembly=Freya.Desktop.Core"
+               d:DesignHeight="450"
+               Style="{StaticResource PageStyle}"
+               d:DesignWidth="800">
+    <core:CorePage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="TextBlock"
+                   x:Key="ClientFieldsStyle">
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter Property="Margin"
+                        Value="0,0,0,12" />
+                <Setter Property="FontSize"
+                        Value="{DynamicResource H7FontSize}" />
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource RobotoRegular}" />
+                <Setter Property="FontWeight"
+                        Value="Regular" />
+                <Setter Property="Foreground"
+                        Value="{DynamicResource textDarkColorBrush}" />
+            </Style>
+        </ResourceDictionary>
+    </core:CorePage.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="270" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border Style="{DynamicResource BorderCardStyle}"
+                Padding="16">
+            <StackPanel Orientation="Vertical">
+                <Border  Height="80"
+                         Width="80"
+                         Margin="0,0,0,16"
+                         CornerRadius="40">
+                    <Border.Background>
+                        <ImageBrush Stretch="UniformToFill"
+                                    ImageSource="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />
+                    </Border.Background>
+                </Border>
+                <TextBlock Margin="0,0,0,18"
+                           FontSize="{DynamicResource H6FontSize}"
+                           TextWrapping="Wrap"
+                           FontFamily="{DynamicResource RobotoMedium}"
+                           FontWeight="Medium"
+                           TextAlignment="Center"
+                           d:Text="Stela"
+                           Text="{Binding Company.Name}"
+                           Foreground="{DynamicResource textDarkColorBrush}"
+                           Style="{StaticResource ClientFieldsStyle}" />
+               
+                <Grid Height="1"
+                      HorizontalAlignment="Stretch"
+                      Background="Gray"
+                      Margin="12" />
+                <StackPanel Orientation="Horizontal">
+                    <controls:IconButtonControl Command="{Binding EditCompanyCommand}"
+                                                Margin="8,0,0,0"
+                                                Style="{StaticResource MediumPrimaryStyleIconButton}"
+                                                ImageSource="{StaticResource EditWhiteIcon}" />
+                    <controls:IconButtonControl Command="{Binding DeleteCompanyCommand}"
+                                                Margin="8,0,0,0"
+                                                Style="{StaticResource MediumPrimaryStyleIconButton}"
+                                                ImageSource="{StaticResource DeleteIcon}" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Margin="0,36,32,24">
+                <RadioButton x:Name="EmployeeRadioButton"
+                             Style="{StaticResource RecordRadioButtonStyle}"
+                             IsChecked="True">
+                    <TextBlock Text="Empleados"
+                               Margin="4" />
+                </RadioButton>
+                <RadioButton x:Name="ClinicsRadioButton"
+                             Margin="12,0"
+                             Style="{StaticResource RecordRadioButtonStyle}">
+                    <TextBlock Text="Clinicas"
+                               Margin="4" />
+                </RadioButton>
+                <RadioButton x:Name="SubsRadioButton"
+                             Style="{StaticResource RecordRadioButtonStyle}">
+                    <TextBlock Text="Subscripciones"
+                               Margin="4" />
+                </RadioButton>
+            </StackPanel>
+            <Button Content="Crear empleado"
+                    Style="{StaticResource SmallPrimaryButton}"
+                    HorizontalAlignment="Right"
+                    Visibility="{Binding IsChecked, ElementName=EmployeeRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Margin="0,36,32,24"
+                    Command="{Binding CreateEmployeeCommand}" />
+            <Button Content="Crear clínica"
+                    Visibility="{Binding IsChecked, ElementName=ClinicsRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    HorizontalAlignment="Right"
+                    Margin="0,36,32,24"
+                    Style="{StaticResource SmallPrimaryButton}"
+                    Command="{Binding CreateClinicCommand}" />
+            <Grid Grid.Row="1"
+                  DataContext="{Binding EmployeesForCompanyViewModel}"
+                  Visibility="{Binding IsChecked, ElementName=EmployeeRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Visibility="{Binding Employees.Items.Count, Converter={StaticResource IsZeroValueToVisibilityConverter}}">
+                    <StackPanel Orientation="Vertical"
+                                VerticalAlignment="Center">
+                        <Image Source="{StaticResource NoItemsIcon}"
+                               Width="200"
+                               Height="200" />
+                        <TextBlock Text="No hay nigun empleado"
+                                   Foreground="{DynamicResource primary1ColorBrush}"
+                                   FontSize="{DynamicResource H3FontSize}"
+                                   FontWeight="Regular"
+                                   HorizontalAlignment="Center"
+                                   FontFamily="{DynamicResource RobotoRegular}" />
+                    </StackPanel>
+                </StackPanel>
+                <ListView ItemsSource="{Binding Employees.Items}"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          ItemContainerStyle="{DynamicResource ListboxItemStyle}"
+                          Visibility="{Binding Employees.Items.Count, Converter={StaticResource IsZeroValueToVisibilityConverter}, ConverterParameter=inverter}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <templates:EmployeeItemTemplate Margin="0" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <controls:PageButtons 
+                    HasNext="{Binding Employees.HasNext}"
+                    HasPrevious="{Binding Employees.HasPrevious}"
+                    CurrentPage="{Binding Employees.CurrentPage}"
+                    TotalPages="{Binding Employees.TotalPages}"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right" 
+                    Margin="0,0,20,12"/>
+            </Grid>
+            <Grid Visibility="{Binding IsChecked, ElementName=ClinicsRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}"
+                  DataContext="{Binding ClinicsForCompanyViewModel}"
+                  Grid.Row="1">
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Visibility="{Binding Clinics.Items.Count, Converter={StaticResource IsZeroValueToVisibilityConverter}}">
+                    <StackPanel Orientation="Vertical"
+                                VerticalAlignment="Center">
+                        <Image Source="{StaticResource NoItemsIcon}"
+                               Width="200"
+                               Height="200" />
+                        <TextBlock Text="No hay nigúna clínica"
+                                   Foreground="{DynamicResource primary1ColorBrush}"
+                                   FontSize="{DynamicResource H3FontSize}"
+                                   FontWeight="Regular"
+                                   HorizontalAlignment="Center"
+                                   FontFamily="{DynamicResource RobotoRegular}" />
+                    </StackPanel>
+                </StackPanel>
+                <ListView ItemsSource="{Binding Clinics.Items}"
+                          Visibility="{Binding Clinics.Items.Count, Converter={StaticResource IsZeroValueToVisibilityConverter}, ConverterParameter=inverter}"
+                          ItemContainerStyle="{DynamicResource ListboxItemStyle}"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <templates:ClinicItemTemplate  Margin="0" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <controls:PageButtons 
+                    HasNext="{Binding Clinics.HasNext}"
+                    HasPrevious="{Binding Clinics.HasPrevious}"
+                    CurrentPage="{Binding Clinics.CurrentPage}"
+                    TotalPages="{Binding Clinics.TotalPages}"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right" 
+                    Margin="0,0,20,12"/>
+            </Grid>
+            <!--Sounds-->
+            <Grid Visibility="{Binding IsChecked, ElementName=SubsRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}"
+                  Grid.Row="1">
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Visibility="{Binding Subscriptions.Count, Converter={StaticResource IsZeroValueToVisibilityConverter}}">
+                    <StackPanel Orientation="Vertical"
+                                VerticalAlignment="Center">
+                        <Image Source="{StaticResource NoItemsIcon}"
+                               Width="200"
+                               Height="200" />
+                        <TextBlock Text="No hay nigúna subscripción"
+                                   Foreground="{DynamicResource primary1ColorBrush}"
+                                   FontSize="{DynamicResource H3FontSize}"
+                                   FontWeight="Regular"
+                                   HorizontalAlignment="Center"
+                                   FontFamily="{DynamicResource RobotoRegular}" />
+                    </StackPanel>
+                </StackPanel>
+                <ListView ItemsSource="{Binding Subscriptions}"
+                          ItemContainerStyle="{DynamicResource ListboxItemStyle}"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          Visibility="{Binding Subscriptions.Count, Converter={StaticResource IsZeroValueToVisibilityConverter}, ConverterParameter=inverter}"
+                          Grid.Row="1">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <templates:SubscriptionItemTemplate />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Grid>
+</core:CorePage>

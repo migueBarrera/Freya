@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<core:CorePage xmlns:core="clr-namespace:FreyaMobile.Core.Framework;assembly=FreyaMobile.Core"
+               xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="FreyaMobile.Features.Clients.Register.RegisterPage"
+               Shell.TabBarIsVisible="false"
+               Shell.NavBarIsVisible="True"
+               xmlns:text="clr-namespace:FreyaMobile.Services"
+               Title="{text:Translate Key=page_title_register}">
+    <ScrollView>
+        <StackLayout Padding="32" Spacing="6">
+            <Frame Style="{StaticResource FrameImageStyle}">
+                <Image Source="logintitle.png"
+                       Style="{StaticResource ImageDetailStyle}" />
+            </Frame>
+            <Label Margin="0,0,0,16"
+                   FontAttributes="Bold"
+                   FontSize="32"
+                   HorizontalTextAlignment="Start"
+                   Text="{text:Translate Key=register_join_with_us}"
+                   TextColor="{AppThemeBinding Light={StaticResource textDarkColor}, Dark={StaticResource secondary1Color}}" />
+            <Entry HorizontalOptions="FillAndExpand"
+                   Keyboard="Email"
+                   Placeholder="{text:Translate Key=email}"
+                   ReturnType="Next"
+                   Text="{Binding RegisterUser.Email.Value}"
+                   Visual="Default">
+                <!--<Entry.Behaviors>
+                    <xct:MultiValidationBehavior Errors="{Binding RegisterUser.Email.Errors}"
+                                                 Flags="ValidateOnValueChanging"
+                                                 InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                 IsValid="{Binding RegisterUser.Email.IsValid}"
+                                                 ValidStyle="{StaticResource ValidEntryStyle}">
+                        <xct:EmailValidationBehavior xct:MultiValidationBehavior.Error="{x:Static res:Strings.Register_Error_Min_Email}" />
+                    </xct:MultiValidationBehavior>
+                </Entry.Behaviors>-->
+            </Entry>
+            <Entry HorizontalOptions="FillAndExpand"
+                   Keyboard="Text"
+                   Placeholder="{text:Translate Key=name}"
+                   ReturnType="Next"
+                   Text="{Binding RegisterUser.Name.Value}"
+                   Visual="Default">
+                <!--<Entry.Behaviors>
+                    <xct:MultiValidationBehavior Errors="{Binding RegisterUser.Name.Errors}"
+                                                 Flags="ValidateOnValueChanging"
+                                                 InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                 IsValid="{Binding RegisterUser.Name.IsValid}"
+                                                 ValidStyle="{StaticResource ValidEntryStyle}">
+                        <xct:TextValidationBehavior xct:MultiValidationBehavior.Error="{x:Static res:Strings.Register_Error_Min_Name}"
+                                                    MinimumLength="3" />
+                    </xct:MultiValidationBehavior>
+                </Entry.Behaviors>-->
+            </Entry>
+            <Entry HorizontalOptions="FillAndExpand"
+                   Keyboard="Text"
+                   Placeholder="{text:Translate Key=surname}"
+                   ReturnType="Next"
+                   Text="{Binding RegisterUser.LastName.Value}"
+                   Visual="Default">
+                <!--<Entry.Behaviors>
+                    <xct:MultiValidationBehavior Errors="{Binding RegisterUser.LastName.Errors}"
+                                                 Flags="ValidateOnValueChanging"
+                                                 InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                 IsValid="{Binding RegisterUser.LastName.IsValid}"
+                                                 ValidStyle="{StaticResource ValidEntryStyle}">
+                        <xct:TextValidationBehavior xct:MultiValidationBehavior.Error="{x:Static res:Strings.Register_Error_Min_Last_Name}"
+                                                    MinimumLength="2" />
+                    </xct:MultiValidationBehavior>
+                </Entry.Behaviors>-->
+            </Entry>
+            <Entry HorizontalOptions="FillAndExpand"
+                   Keyboard="Telephone"
+                   Placeholder="{text:Translate Key=phone}"
+                   ReturnType="Next"
+                   Text="{Binding RegisterUser.Phone.Value}"
+                   Visual="Default">
+                <!--<Entry.Behaviors>
+                    <xct:MaskedBehavior Mask="XXX XXX XXX" />
+                </Entry.Behaviors>-->
+            </Entry>
+            <Entry HorizontalOptions="FillAndExpand"
+                   IsPassword="True"
+                   Placeholder="{text:Translate Key=pass}"
+                   ReturnType="Next"
+                   Text="{Binding RegisterUser.Pass.Value}"
+                   Visual="Default">
+                <!--<Entry.Effects>
+                    <effects:ShowPassEffect />
+                </Entry.Effects>
+                <Entry.Behaviors>
+                    <xct:MultiValidationBehavior Errors="{Binding RegisterUser.Pass.Errors}"
+                                                 Flags="ValidateOnValueChanging"
+                                                 InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                 IsValid="{Binding RegisterUser.Pass.IsValid}"
+                                                 ValidStyle="{StaticResource ValidEntryStyle}">
+                        <xct:TextValidationBehavior xct:MultiValidationBehavior.Error="{x:Static res:Strings.Register_Error_Min_Pass}"
+                                                    MinimumLength="4" />
+                    </xct:MultiValidationBehavior>
+                </Entry.Behaviors>-->
+            </Entry>
+            <Entry HorizontalOptions="FillAndExpand"
+                   IsPassword="True"
+                   Placeholder="{text:Translate Key=repeat_pass}"
+                   ReturnType="Next"
+                   Text="{Binding RegisterUser.RepeatPass.Value}"
+                   Visual="Default">
+                <!--<Entry.Effects>
+                    <effects:ShowPassEffect />
+                </Entry.Effects>-->
+                <!--<Entry.Behaviors>
+                    <xct:MultiValidationBehavior Errors="{Binding RegisterUser.RepeatPass.Errors}"
+                                                 Flags="ValidateOnValueChanging"
+                                                 InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                 IsValid="{Binding RegisterUser.RepeatPass.IsValid}"
+                                                 ValidStyle="{StaticResource ValidEntryStyle}">
+                        <xct:RequiredStringValidationBehavior xct:MultiValidationBehavior.Error="{x:Static res:Strings.Register_Error_Repeat_Pass}"
+                                                              RequiredString="{Binding RegisterUser.Pass.Value}" />
+                    </xct:MultiValidationBehavior>
+                </Entry.Behaviors>-->
+            </Entry>
+            <!--<Grid Margin="0,8"
+                  ColumnDefinitions="*,auto"
+                  HorizontalOptions="StartAndExpand"
+                  ColumnSpacing="6"
+                  IsVisible="false">
+                <Label Text="¿Estas embarazada?"
+                       VerticalOptions="Center"
+                       TextColor="Black" />
+                <Switch x:Name="styleSwitch"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        OnColor="{StaticResource primary3Color}"
+                        ThumbColor="{StaticResource primary1Color}"
+                        IsToggled="{Binding ArePregnant}">
+                    --><!--<VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="On">
+                                <VisualState.Setters>
+                                    <Setter Property="ThumbColor"
+                                            Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Off">
+                                <VisualState.Setters>
+                                    <Setter Property="ThumbColor"
+                                            Value="Gray" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>--><!--
+                </Switch>
+            </Grid>-->
+            <!--<Entry IsVisible="{Binding Source={x:Reference styleSwitch}, Path=IsToggled}"
+                   Keyboard="Numeric"
+                   Placeholder="¿De cuantas semanas?"
+                   ReturnCommand="{Binding CreateCommand}"
+                   ReturnType="Done"
+                   Text="{Binding WeeksPregnancy}" />-->
+            <Button Margin="0,32,0,0"
+                    Command="{Binding CreateCommand}"
+                    HorizontalOptions="Center"
+                    Text="{text:Translate Key=register_button_create}" />
+        </StackLayout>
+    </ScrollView>
+</core:CorePage>

@@ -1,0 +1,73 @@
+﻿<core:CorePage x:Class="FreyaManager.Features.Employees.CreateEmployeePage"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:core="clr-namespace:Freya.Desktop.Core.Framework;assembly=Freya.Desktop.Core"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+               xmlns:local="clr-namespace:FreyaManager.Features.Employees"
+               mc:Ignorable="d"
+               Style="{StaticResource PageStyle}"
+               d:DesignHeight="450"
+               d:DesignWidth="800"
+               Title="CreateEmployeePage">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border Style="{DynamicResource BorderCardStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="Nuevo empleado"
+                           HorizontalAlignment="Left"
+                           FontSize="{StaticResource H3FontSize}"
+                           Foreground="{StaticResource textDarkColorBrush}" />
+                <StackPanel Orientation="Vertical"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                            Margin="0,8">
+                    <controls:TextBoxWithPlaceHolder PlaceHolder="Email"
+                                                     Title="Email"
+                                                     IsEnabled="{Binding HasEmailPreseleted,Converter={StaticResource InverterBooleanConverter}}"
+                                                     Text="{Binding NewEmployee.EmployeeEmail.Value, Mode=TwoWay}"
+                                                     Margin="0,0,0,8" />
+                    <controls:TextBoxWithPlaceHolder PlaceHolder="Nombre"
+                                                     Title="Nombre"
+                                                     Text="{Binding NewEmployee.EmployeeName.Value, Mode=TwoWay}"
+                                                     Margin="0,0,0,8" />
+                    <controls:TextBoxWithPlaceHolder PlaceHolder="Apellidos"
+                                                     Title="Apellidos"
+                                                     Text="{Binding NewEmployee.EmployeeLastName.Value, Mode=TwoWay}"
+                                                     Margin="0,0,0,16" />
+                    <TextBlock Text="Rol de empleado (No se podrá cambiar)"
+                               FontSize="{DynamicResource H7FontSize}"
+                               Margin="1"
+                               FontFamily="{DynamicResource RobotoRegular}"
+                               FontWeight="Regular"
+                               Foreground="{DynamicResource textDarkColorBrush}" />
+                    <ComboBox ItemsSource="{Binding RolList}"
+                              Margin="0,0,0,8"
+                              DisplayMemberPath="Text"
+                              SelectedValuePath="Rol"
+                              SelectedValue="{Binding NewEmployee.RolSelected.Value}" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right"
+                            Grid.Row="2"
+                            Orientation="Horizontal">
+                    <Button Content="Cancelar"
+                            Style="{StaticResource MediumTertiaryButton}"
+                            Command="{Binding BackCommand}"
+                            HorizontalAlignment="Center"
+                            MinWidth="150"
+                            Margin="0,0,12,0" />
+                    <Button Content="Crear empleado"
+                            Style="{StaticResource MediumPrimaryButton}"
+                            Command="{Binding CreateEmployeeCommand}"
+                            HorizontalAlignment="Center"
+                            MinWidth="150" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </ScrollViewer>
+</core:CorePage>

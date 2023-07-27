@@ -1,0 +1,58 @@
+﻿<dialogs:CoreModalDialog x:Class="Freya.Desktop.Core.Features.Dialogs.ViewPlayerDialog"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       xmlns:dialogs="clr-namespace:Freya.Desktop.Dialogs.Core;assembly=Freya.Desktop.Dialogs"
+                       mc:Ignorable="d"
+                         xmlns:trans="clr-namespace:Freya.Desktop.Localization.Services;assembly=Freya.Desktop.Localization"
+                         Style="{DynamicResource DialogTemplate}"
+                       xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls"
+                       d:DesignHeight="450"
+                       d:DesignWidth="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              MinHeight="300"
+              MinWidth="400">
+            <MediaElement LoadedBehavior="Manual"
+                          Name="mePlayer"
+                          MinHeight="300"
+                          MinWidth="400"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch" />
+            
+        </Grid>
+        
+        <StackPanel Grid.Row="1"
+                    Margin="0,8,0,0">
+            <WrapPanel HorizontalAlignment="Center">
+              
+                <controls:IconButtonControl 
+                                            Click="btnPause_Click"
+                                            Style="{StaticResource SmallPrimaryStyleIconButton}"
+                                            Margin="5,0"
+                                            ImageSource="{StaticResource PauseIconWhite}" />
+                <controls:IconButtonControl 
+                                            Click="btnPlay_Click"
+                                            Style="{StaticResource SmallPrimaryStyleIconButton}"
+                                            Margin="5,0"
+                                            ImageSource="{StaticResource PlayIconWhite}" />
+                <controls:IconButtonControl 
+                                            Style="{StaticResource SmallPrimaryStyleIconButton}"
+                                            Margin="5,0"
+                                            ImageSource="{StaticResource StopIconWhite}"
+                                            Click="btnStop_Click"/>
+
+                <Button 
+                        Style="{DynamicResource SmallSecondaryButton}"
+                    Content="{trans:Translate close}"
+                        Command="{Binding CancelCommand}"/>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</dialogs:CoreModalDialog>

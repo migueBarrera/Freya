@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="FreyaManager.Features.Clinics.Templates.ClinicPaymentItemTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:control="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Border Style="{StaticResource BorderItemCardStyle}" VerticalAlignment="Top">
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Stretch"
+                    MinWidth="180"
+                    VerticalAlignment="Center">
+            <TextBlock Text="{Binding SubscriptionPaymentResponse.Name}"
+                       d:Text="Plan Básico"
+                       VerticalAlignment="Center"
+                       FontSize="15"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center"
+                       Foreground="Black" />
+            <TextBlock Text="{Binding SubscriptionPaymentResponse.Size, Converter={StaticResource SizeToTextConverter}}"
+                       d:Text="5 GB"
+                       Margin="0,4,0,0"
+                       Style="{StaticResource FileSizeStyle}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding SubscriptionPaymentResponse.Description}"
+                       MaxWidth="380"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       Margin="0,6,0,0"
+                       d:Text="Este plan esta pensado para pequeñas clínicas que no tienen un gran volumen de datos"
+                       VerticalAlignment="Center"
+                       FontSize="13"
+                       FontWeight="Light"
+                       HorizontalAlignment="Stretch"
+                       Foreground="Gray" />
+            <Grid Margin="0,6,0,6">
+                <StackPanel Orientation="Vertical">
+                    <control:ClinicPaymentStatus Grid.Column="3"
+                                                 HorizontalAlignment="Center"
+                                                 ShowPlanName="False"
+                                                 SubscriptionPayment="{Binding SubscriptionPaymentResponse}" 
+                                                 Margin="0,0,0,12"/>
+                  
+                </StackPanel>
+            </Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Ver cargos"
+                            Style="{StaticResource SmallPrimaryButton}"
+                            Command="{Binding SeeSubscriptionChargesCommand}"
+                            Margin="8,0"
+                            />
+                <Button Content="Ver en stripe"
+                            Style="{StaticResource SmallPrimaryButton}"
+                            Command="{Binding SeeSubscriptionOnStripeCommand}"
+                            />
+
+
+            </StackPanel>
+
+        </StackPanel>
+    </Border>
+</UserControl>

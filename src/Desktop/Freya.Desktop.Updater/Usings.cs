@@ -1,0 +1,16 @@
+﻿global using System;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using Microsoft.Extensions.Hosting;
+global using System.Windows;
+global using Freya.Desktop.Dialogs.Core;
+global using Freya.Desktop.Dialogs.Interfaces;
+global using Microsoft.Extensions.Logging;
+global using System.ComponentModel;
+global using System.Diagnostics;
+global using System.Reflection;
+global using Microsoft.Extensions.Configuration;
+global using System.IO.Compression;
+global using System.Net.Http.Headers;
+global using MvvmHelpers.Commands;
+global using Freya.Localization.Abstractions;

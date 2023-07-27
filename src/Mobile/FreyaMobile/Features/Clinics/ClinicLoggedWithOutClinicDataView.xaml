@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:text="clr-namespace:FreyaMobile.Services"
+             x:Class="FreyaMobile.Features.Clinics.ClinicLoggedWithOutClinicDataView">
+  <ContentView.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="Center">
+                <Label Margin="32,0,32,32"
+                       Style="{StaticResource TitleMainStyle}"
+                       Text="{text:Translate Key=client_sign_in_but_not_clinic_data}" />
+                <!--<lottie:AnimationView Margin="32,16,32,8"
+                                      Animation="Res.Images.online-medical-assistance-animation.json"
+                                      AutoPlay="True"
+                                      RepeatMode="Infinite" />-->
+                <Button Margin="0,0,0,16"
+                        Command="{Binding CheckCommand}"
+                        HorizontalOptions="Center"
+                        Text="{text:Translate Key=check}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

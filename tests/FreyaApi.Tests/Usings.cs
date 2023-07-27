@@ -1,0 +1,15 @@
+global using NUnit.Framework;
+global using FreyaApi.Controllers.Services;
+global using FreyaApi.Tests.Controllers.Services.Builders;
+global using FreyaApi.Services;
+global using FreyaApi.Tests.Services;
+global using Microsoft.AspNetCore.Mvc;
+global using Models.Core.Common;
+global using System.Security.Claims;
+global using FreyaApi.Infrastructure.Models;
+global using FreyaApi.Repository.Interfaces;
+global using FreyaApi.Services.Interfaces;
+global using Moq;
+global using Microsoft.Extensions.Logging.Abstractions;
+global using Microsoft.Extensions.Logging;
+global using FreyaPayments.Core;

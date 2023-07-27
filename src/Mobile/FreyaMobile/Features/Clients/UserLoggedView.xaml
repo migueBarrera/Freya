@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="FreyaMobile.Features.Clients.UserLoggedView"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:converters="clr-namespace:FreyaMobile.Core.Converters;assembly=FreyaMobile.Core"
+             xmlns:text="clr-namespace:FreyaMobile.Services"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LoggedButtonStyle"
+                   TargetType="Button">
+                <Setter Property="TextColor"
+                        Value="{AppThemeBinding Light={StaticResource textDarkColor}, Dark={StaticResource secondary1Color}}" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+                <Setter Property="HorizontalOptions"
+                        Value="Start" />
+                <Setter Property="Margin"
+                        Value="8,0" />
+            </Style>
+            <converters:ListIsNotNullOrEmptyConverter x:Key="ListIsNotNullOrEmptyConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <Grid RowDefinitions="*,2.5*">
+        <Grid BackgroundColor="{AppThemeBinding Light={StaticResource secondary5Color}, Dark={StaticResource primary1Color}}">
+            <StackLayout VerticalOptions="Center"
+                         Spacing="6">
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             Spacing="3">
+                    <Label FontSize="18"
+                           Text="{Binding User.Name}"
+                           HorizontalTextAlignment="Center"
+                           FontFamily="RobotoMedium"
+                           TextColor="{AppThemeBinding Light={StaticResource textDarkColor}, Dark={StaticResource secondary1Color}}" />
+                    <Label FontSize="18"
+                           Text="{Binding User.LastName}"
+                           FontFamily="RobotoMedium"
+                           HorizontalTextAlignment="Center"
+                           TextColor="{AppThemeBinding Light={StaticResource textDarkColor}, Dark={StaticResource secondary1Color}}" />
+                </StackLayout>
+                <Label FontSize="14"
+                       HorizontalTextAlignment="Center"
+                       Text="{Binding User.Email}"
+                       FontFamily="RobotoRegular"
+                       TextColor="{AppThemeBinding Light={StaticResource textColor}, Dark={StaticResource secondary2Color}}" />
+                <Picker BackgroundColor="Transparent"
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        FontFamily="RobotoRegular"
+                        ItemsSource="{Binding User.Clinics}"
+                        SelectedItem="{Binding ClinicSelected}"
+                        IsVisible="{Binding User.Clinics, Converter={StaticResource ListIsNotNullOrEmptyConverter}}"
+                        TextColor="{AppThemeBinding Light={StaticResource textColor}, Dark={StaticResource secondary2Color}}"
+                        VerticalOptions="Center" />
+            </StackLayout>
+        </Grid>
+        <StackLayout Grid.Row="1"
+                     Margin="0,0,0,0"
+                     Spacing="0"
+                     BackgroundColor="{AppThemeBinding Light={StaticResource secondary2Color}, Dark={StaticResource primary1Color}}">
+            <Button Command="{Binding EditUserCommand}"
+                    Style="{StaticResource LoggedButtonStyle}"
+                    ImageSource="profile.png"
+                    ContentLayout="Left, 8"
+                    Text="{text:Translate Key=button_edit_profile}" />
+            <Button Command="{Binding ChangePassCommand}"
+                    ImageSource="key.png"
+                    ContentLayout="Left, 8"
+                    Style="{StaticResource LoggedButtonStyle}"
+                    Text="{text:Translate Key=button_change_pass}" />
+            <Button Command="{Binding CloseSessionCommand}"
+                    Style="{StaticResource LoggedButtonStyle}"
+                    ImageSource="logout.png"
+                    ContentLayout="Left, 8"
+                    Text="{text:Translate Key=button_close_session}" />
+        </StackLayout>
+    </Grid>
+</ContentView>

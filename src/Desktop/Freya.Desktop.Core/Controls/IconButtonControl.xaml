@@ -1,0 +1,73 @@
+﻿<Button x:Class="Freya.Desktop.Core.Controls.IconButtonControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d"
+        x:Name="self"
+        Background="Transparent"
+        d:DesignHeight="40"
+        d:DesignWidth="40">
+    <Button.Template>
+        <ControlTemplate TargetType="{x:Type Button}">
+            <Grid >
+                <Border Height="{Binding ElementName=self,Path=ButtonSize}"
+                        Width="{Binding ElementName=self,Path=ButtonSize}"
+                        x:Name="overBorder"
+                        CornerRadius="4"
+                        Background="{DynamicResource primary1ColorBrush}">
+                    <Grid>
+                        <Image Name="Normal"
+                               Width="{Binding ElementName=self, Path=IconSize}"
+                               Height="{Binding ElementName=self, Path=IconSize}"
+                               Source="{Binding ElementName=self, Path=ImageSource}" />
+                        <!--<Image Name="Pressed"
+                               Width="{Binding ElementName=self, Path=IconSize}"
+                               Height="{Binding ElementName=self, Path=IconSize}"
+                               Source="{Binding ElementName=self, Path=ImageSourcePressed}"
+                               Visibility="Hidden" />
+                        <Image Name="Disabled"
+                               Width="{Binding ElementName=self, Path=IconSize}"
+                               Height="{Binding ElementName=self, Path=IconSize}"
+                               Source="{Binding ElementName=self, Path=ImageSourceDisabled}"
+                               Visibility="Hidden" />-->
+                    </Grid>
+                </Border>
+                <Border Height="{Binding ElementName=self,Path=ButtonSize}"
+                        Width="{Binding ElementName=self,Path=ButtonSize}"
+                        x:Name="maskBorder"
+                        CornerRadius="4"
+                        Background="Transparent" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsPressed"
+                         Value="True">
+                    <Setter TargetName="maskBorder"
+                            Property="Opacity"
+                            Value="0.8" />
+                    <Setter TargetName="maskBorder"
+                            Property="Background"
+                            Value="Black" />
+                </Trigger>
+                <Trigger Property="IsMouseOver"
+                         Value="True">
+                    <Setter TargetName="maskBorder"
+                            Property="Opacity"
+                            Value="0.2" />
+                    <Setter TargetName="maskBorder"
+                            Property="Background"
+                            Value="White" />
+                </Trigger>
+                <Trigger Property="IsEnabled"
+                         Value="False">
+                    <Setter TargetName="maskBorder"
+                            Property="Opacity"
+                            Value="0.6" />
+                    <Setter TargetName="maskBorder"
+                            Property="Background"
+                            Value="White" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Button.Template>
+</Button>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<core:CorePage xmlns:core="clr-namespace:FreyaMobile.Core.Framework;assembly=FreyaMobile.Core" xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="FreyaMobile.Features.Images.DetailImagePage"
+               Shell.NavBarIsVisible="True"
+               Shell.TabBarIsVisible="false"
+               xmlns:text="clr-namespace:FreyaMobile.Services"
+               Title="{text:Translate Key=page_title_images}">
+    <core:CorePage.ToolbarItems>
+        <ToolbarItem Text="Download"
+                     IconImageSource="download.png"
+                     Command="{Binding DownloadItemCommand}" />
+        <ToolbarItem Text="Share"
+                     IconImageSource="share.png"
+                     Command="{Binding ShareItemCommand}" />
+    </core:CorePage.ToolbarItems>
+    <Grid>
+        <CarouselView ItemsSource="{Binding ImagesCapsule.Images}"
+                      Position="{Binding CurrentPosition}"
+                      IndicatorView="indicatorView">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="4">
+                        <Image Aspect="AspectFit"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               Source="{Binding Image}" />
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <IndicatorView x:Name="indicatorView"
+                       IndicatorColor="{StaticResource primary4Color}"
+                       SelectedIndicatorColor="{StaticResource primary1Color}"
+                       VerticalOptions="End"
+                       Margin="0,0,0,32"
+                       HorizontalOptions="Center" />
+    </Grid>
+</core:CorePage>

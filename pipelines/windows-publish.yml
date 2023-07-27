@@ -1,0 +1,18 @@
+# Triggers on push to master
+trigger: none
+
+pool:
+  vmImage: 'windows-2022'
+  demands:
+    - agent.os -equals Windows_NT
+
+variables:
+  - group: blobstorage
+    
+steps:
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'filePath'
+    filePath: '$(System.DefaultWorkingDirectory)\pipelines\PublishVersion.ps1'
+    arguments: "-appVersion '$(version)' -blobUrl '$(blobUrl)' -sasToken '$(sasToken)' "

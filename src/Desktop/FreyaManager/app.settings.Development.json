@@ -1,0 +1,12 @@
+{
+  "IsProductionEvironment": false,
+  "ServerUri": "https://freyadevelop.es/",
+  "Data": {
+    "AppUpdateUrl": "https://mibebetestmbmdevelop.blob.core.windows.net/development/FreyaManager.zip"
+  },
+  "AppCenter": {
+    "Secret": "YOUR_KEY",
+    "IsEnabledAnalitics": true,
+    "IsEnabledCrashes": true
+  }
+}

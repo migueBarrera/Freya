@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:text="clr-namespace:FreyaMobile.Services"
+             x:Class="FreyaMobile.Features.Clinics.ClinicNotLoggedView">
+    <Grid>
+        <StackLayout 
+                     VerticalOptions="Center">
+            <Label Margin="32,0,32,32"
+                   Style="{StaticResource TitleMainStyle}"
+                   Text="{text:Translate Key=you_need_sign_in}" />
+            <!--<lottie:AnimationView Margin="32,16,32,8"
+                                  Animation="Res.Images.need-login.json"
+                                  AutoPlay="True"
+                                  RepeatMode="Infinite" />-->
+            <Button Margin="0,0,0,16"
+                    Command="{Binding GoToLoginCommand}"
+                    HorizontalOptions="Center"
+                    Text="{text:Translate Key=sign_in}" />
+        </StackLayout>
+        
+    </Grid>
+</ContentView>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<core:CorePage xmlns:core="clr-namespace:FreyaMobile.Core.Framework;assembly=FreyaMobile.Core" xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FreyaMobile.Features.Sounds.DetailSoundPage"
+               Shell.NavBarIsVisible="True"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               Shell.TabBarIsVisible="false"
+               xmlns:text="clr-namespace:FreyaMobile.Services"
+               Title="{text:Translate Key=page_title_sounds}">
+    <core:CorePage.ToolbarItems>
+        <ToolbarItem Text="Download"
+                     IconImageSource="download.png"
+                     Command="{Binding DownloadItemCommand}" />
+        <ToolbarItem Text="Share"
+                     IconImageSource="share.png"
+                     Command="{Binding ShareItemCommand}" />
+    </core:CorePage.ToolbarItems>
+    
+    <!--<VerticalStackLayout VerticalOptions="Center">
+        <Border Style="{StaticResource BorderImageMainItemStyle}"
+                WidthRequest="88">
+            <Grid>
+                <Image Aspect="AspectFill"
+                       HeightRequest="88"
+                       BackgroundColor="Gray"
+                       Source="default-placeholder.png"
+                       WidthRequest="88" />
+                <ImageButton BackgroundColor="Transparent"
+                             Command="{Binding PlayCommand}"
+                             Source="play_circle.png" />
+            </Grid>
+        </Border>
+    </VerticalStackLayout>-->
+    <toolkit:MediaElement ShouldAutoPlay="True"
+                        x:Name="MediaElementControl"
+                        Source="{Binding Capsule.Video}" />
+</core:CorePage>

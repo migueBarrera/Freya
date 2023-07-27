@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<core:CorePage xmlns:core="clr-namespace:FreyaMobile.Core.Framework;assembly=FreyaMobile.Core" xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="FreyaMobile.Features.Videos.DetailVideoPage"
+               Shell.NavBarIsVisible="True"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               Shell.TabBarIsVisible="false"
+               xmlns:text="clr-namespace:FreyaMobile.Services"
+               Title="{text:Translate Key=page_title_videos}">
+    <core:CorePage.ToolbarItems>
+        <ToolbarItem Text="Download"
+                     IconImageSource="download.png"
+                     Command="{Binding DownloadItemCommand}" />
+        <ToolbarItem Text="Share"
+                     IconImageSource="share.png"
+                     Command="{Binding ShareItemCommand}" />
+    </core:CorePage.ToolbarItems>
+    <toolkit:MediaElement ShouldAutoPlay="True"
+                        x:Name="MediaElementControl"
+                        Source="{Binding Capsule.Video}" />
+</core:CorePage>

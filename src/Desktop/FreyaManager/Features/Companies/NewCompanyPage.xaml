@@ -1,0 +1,70 @@
+﻿<core:CorePage x:Class="FreyaManager.Features.Companies.NewCompanyPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:FreyaManager.Features.Companies"
+      mc:Ignorable="d"
+         xmlns:core="clr-namespace:Freya.Desktop.Core.Framework;assembly=Freya.Desktop.Core"
+         xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+      d:DesignHeight="450"
+      Style="{StaticResource PageStyle}"
+      d:DesignWidth="800">
+     
+    <ScrollViewer>
+        <Grid>
+            <Border Style="{DynamicResource BorderCardStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Nombre de compañia"
+                               FontSize="{StaticResource H3FontSize}"
+                               FontFamily="{StaticResource RobotoMedium}"
+                               Margin="0,0,0,16"
+                               HorizontalAlignment="Left"
+                               Foreground="{StaticResource primary1ColorBrush}" />
+                    <StackPanel Orientation="Vertical"
+                                Grid.Row="1">
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="Compañia"
+                                                         Title="Compañia"
+                                                         Text="{Binding CompanyName, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <ListBox ItemsSource="{Binding SubcriptionCheckboxes}"
+                                 SelectionMode="Multiple">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="IsSelected"
+                                            Value="{Binding Checked, Mode=TwoWay}" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding Checked, Mode=TwoWay}"
+                                              Content="{Binding Label}" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right"
+                                Grid.Row="2"
+                                Orientation="Horizontal">
+                        <Button Content="Cancelar"
+                                Style="{StaticResource MediumTertiaryButton}"
+                                Command="{Binding BackCommand}"
+                                HorizontalAlignment="Center"
+                                MinWidth="150"
+                                Margin="0,0,12,0" />
+                        <Button Content="Añadir compañia"
+                                Style="{StaticResource MediumPrimaryButton}"
+                                Command="{Binding CreateCommand}"
+                                HorizontalAlignment="Center"
+                                MinWidth="150" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</core:CorePage>

@@ -1,0 +1,102 @@
+trigger:
+  branches:
+    include:
+    - main
+    - develop
+  paths:
+    include:
+    - src/Mobile
+    - src/Common/ApiContract
+    - src/Common/Models.Core
+    - src/Common/AppCenterServices
+    - src/Common/Freya.Validations
+    - src/Common/Freya.Localization.Abstractions
+    - pipelines/maui-CD.yml
+
+
+parameters:
+- name: AppVersionMayor
+  displayName: App Version (ej. 1)
+  default: 1
+  type: string
+- name: AppVersionMinor
+  displayName: Build App Version (ej. 0)
+  default: 1
+  type: string
+
+pool:
+  vmImage: 'windows-2022'
+
+variables:
+  - group: androidsecrets
+  - group: net-versions
+  - name: csproj
+    value: 'src/Mobile/FreyaMobile/FreyaMobile.csproj'    
+  - name: AppVersionMinorPrepared
+    ${{ if ge(parameters.AppVersionMinor, 10) }}:
+      value: ${{ format('{0}',parameters.AppVersionMinor) }}
+    ${{ else }}:
+      value: ${{ format('0{0}',parameters.AppVersionMinor) }}
+  - name: MayorAndMinorPrepared
+    value: ${{ format('{0}{1}',parameters.AppVersionMayor, variables.AppVersionMinorPrepared) }}
+  - name: AppVersionBuild
+    value: $[counter(variables.MayorAndMinorPrepared, 1000)]  
+  - name: ApplicationDisplayVersion
+    value: ${{ format('{0}.{1}', parameters.AppVersionMayor, parameters.AppVersionMinor ) }}
+  - name: ApplicationVersion
+    value: ${{ format('{0}{1}', parameters.AppVersionMayor, variables.AppVersionMinorPrepared ) }}
+jobs:
+- job: 'Android_Bundle'
+  steps:
+  - pwsh: |
+      If ("$(Build.SourceBranch)" -eq "refs/heads/main") {
+        Write-Host "##vso[task.setvariable variable=buildConfiguration;]Release"
+      }else {
+        Write-Host "##vso[task.setvariable variable=buildConfiguration;]Development"
+      }
+    name: UpdateEnvironment
+    displayName: 'Environment Selector'    
+  - pwsh: |
+       If ("$(Build.SourceBranch)" -eq "refs/heads/main") {
+            Write-Host "##vso[build.updatebuildnumber]$(ApplicationDisplayVersion).$(AppVersionBuild) Pro"
+          }else {
+            Write-Host "##vso[build.updatebuildnumber]$(ApplicationDisplayVersion).$(AppVersionBuild) Dev"
+          }
+    name: SetBuildName
+    displayName: 'set BuildName'
+  - task: UseDotNet@2
+    inputs:
+      packageType: 'sdk'
+      version: '$(net-7-maui)'
+      includePreviewVersions: false  
+  - task: CmdLine@2
+    displayName: "Install maui workloads"
+    inputs:
+      script: 'dotnet workload install maui-android maui-ios'
+
+  - task: DownloadSecureFile@1
+    displayName: 'Download keystore'
+    name: keystore
+    inputs:
+      secureFile: '$(keystore-file-name)'
+
+  - task: DotNetCoreCLI@2
+    displayName: "Build android"
+    inputs:
+      command: 'publish'
+      publishWebProjects: false
+      projects: '$(csproj)'
+      arguments: '-c $(buildConfiguration) -f net7.0-android /p:AndroidKeyStore=true /p:ApplicationDisplayVersion=$(ApplicationDisplayVersion).$(AppVersionBuild) /p:ApplicationVersion=$(ApplicationVersion)$(AppVersionBuild) /p:AndroidSigningKeyStore=$(keystore-file-name) /p:AndroidSigningStorePass=$(androidKeyStorePass) /p:AndroidSigningKeyAlias=$(androidKeyStoreAlias) /p:AndroidSigningKeyPass=$(androidKeyStoreAliasPass)'
+
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(agent.builddirectory)'
+      Contents: '**/?(*Signed.aab|*Signed.apk)'
+      TargetFolder: '$(build.artifactstagingdirectory)'
+      flattenFolders: true
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'drop'
+      publishLocation: 'Container'

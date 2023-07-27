@@ -1,0 +1,93 @@
+﻿<core:CorePage x:Class="Freya.Features.Clients.ClientsPage"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               mc:Ignorable="d"
+               xmlns:trans="clr-namespace:Freya.Desktop.Localization.Services;assembly=Freya.Desktop.Localization"
+               xmlns:core="clr-namespace:Freya.Desktop.Core.Framework;assembly=Freya.Desktop.Core"
+               xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+               Background="{StaticResource secondary2ColorBrush}"
+               xmlns:templates="clr-namespace:Freya.Desktop.Core.Features.Clients;assembly=Freya.Desktop.Core"
+               d:DesignHeight="450"
+               d:DesignWidth="800"
+               Title="ClientsPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid Margin="32,36,32,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <controls:SearchControl Grid.Column="0"
+                                    VerticalAlignment="Top"
+                                    Visibility="Visible"
+                                    SearchCommand="{Binding SearchCommand}"
+                                    PlaceHolder="{trans:Translate search_clients}"
+                                    Text="{Binding SearchText, Mode=TwoWay}" />
+            <Button HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="42,0,0,0"
+                    Grid.Column="1"
+                    Style="{StaticResource SmallPrimaryButton}"
+                    Command="{Binding AddClientCommand}"
+                    Content="{trans:Translate add_client}" />
+        </Grid>
+        <ListView ItemContainerStyle="{DynamicResource ListboxItemStyle}"
+                  Grid.Row="1"
+                  Margin="28,0,0,0"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ItemsSource="{Binding FilteredClients.Items}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+					<templates:ClientItemTemplate Margin="0,0,6,0" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+       
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Vertical"
+                        VerticalAlignment="Center">
+                <Image Source="{StaticResource NoItemsIcon}" Width="200" Height="200"/>
+                <TextBlock Text="{trans:Translate no_clients_found}"
+                           Foreground="{DynamicResource primary1ColorBrush}"
+                           FontSize="{DynamicResource H3FontSize}"
+                           FontWeight="Regular"
+                           HorizontalAlignment="Center"
+                           FontFamily="{DynamicResource RobotoRegular}" />
+                
+            </StackPanel>
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Visibility"
+                            Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding FilteredClients.Items.IsEmpty}"
+                                     Value="true">
+                            <Setter Property="Visibility"
+                                    Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+        </Grid>
+
+        <controls:PageButtons 
+            HasNext="{Binding FilteredClients.HasNext}"
+            HasPrevious="{Binding FilteredClients.HasPrevious}"
+            CurrentPage="{Binding FilteredClients.CurrentPage}"
+            TotalPages="{Binding FilteredClients.TotalPages}"
+            Grid.Row="2" 
+            HorizontalAlignment="Right" 
+            Margin="0,0,20,12"/>
+    </Grid>
+</core:CorePage>

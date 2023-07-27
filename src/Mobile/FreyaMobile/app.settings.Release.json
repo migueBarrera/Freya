@@ -1,0 +1,11 @@
+{
+  "IsProductionEvironment": true,
+  "Server": {
+    "BaseUri": "https://apifreyafertility.com/"
+  },
+  "AppCenter": {
+    "SecretAndroid": "YOUR_KEY",
+    "IsEnabledAnalitics": false,
+    "IsEnabledCrashes": true
+  }
+}

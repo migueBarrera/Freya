@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="FreyaManager.Features.Faqs.Templates.FaqItemTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:FreyaManager.Features.Faqs.Templates"
+             mc:Ignorable="d"
+             x:Name="self"
+             xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid>
+        <Border Style="{StaticResource BorderItemCardStyle}"
+                HorizontalAlignment="Stretch">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Main}"
+                               d:Text="Titulo"
+                               FontSize="{StaticResource H3FontSize}"
+                               Foreground="{StaticResource textDarkColorBrush}"
+                               FontFamily="{StaticResource RobotoMedium}"
+                               FontWeight="Medium"
+                               VerticalAlignment="Center" />
+                    <controls:IconButtonControl Grid.Column="1"
+                                                Command="{Binding DeleteCommand}"
+                                                Visibility="{Binding IsOpen, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                Style="{StaticResource SmallPrimaryStyleIconButton}"
+                                                ImageSource="{StaticResource DeleteIcon}" />
+                    <controls:IconButtonControl Grid.Column="2"
+                                                Command="{Binding EditCommand}"
+                                                Visibility="{Binding IsOpen, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                Margin="8,0,0,0"
+                                                Style="{StaticResource SmallPrimaryStyleIconButton}"
+                                                ImageSource="{StaticResource EditWhiteIcon}" />
+                    <controls:IconButtonControl Grid.Column="3"
+                                                Command="{Binding OpenCommand}"
+                                                Margin="8,0,0,0"
+                                                Style="{StaticResource SmallPrimaryStyleIconButton}"
+                                                Visibility="{Binding IsOpen, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=inverter}"
+                                                ImageSource="{StaticResource expand_more}" />
+                    <controls:IconButtonControl Grid.Column="3"
+                                                Margin="8,0,0,0"
+                                                Visibility="{Binding IsOpen, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                Command="{Binding OpenCommand}"
+                                                Style="{StaticResource SmallPrimaryStyleIconButton}"
+                                                ImageSource="{StaticResource expand_less}" />
+                </Grid>
+                <Border HorizontalAlignment="Stretch"
+                        Height="1"
+                        Margin="16,16"
+                        Visibility="{Binding IsOpen, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Background="{StaticResource disabledDarkColorBrush}" />
+                <Grid Visibility="{Binding IsOpen, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <TextBlock d:Text="Dezcripcioón"
+                               Text="{Binding Desc}"
+                               TextWrapping="WrapWithOverflow"
+                               FontSize="{StaticResource H5FontSize}"
+                               Foreground="{StaticResource textDarkColorBrush}"
+                               FontFamily="{StaticResource RobotoRegular}"
+                               FontWeight="Regular"
+                               VerticalAlignment="Center" />
+                </Grid>
+            </StackPanel>
+        </Border>
+        <controls:LoaderView IsRunning="{Binding IsBusy}" />
+    </Grid>
+</UserControl>

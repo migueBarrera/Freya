@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell x:Class="FreyaMobile.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:FreyaMobile"
+       xmlns:client="clr-namespace:FreyaMobile.Features.Clients"
+       xmlns:clinics="clr-namespace:FreyaMobile.Features.Clinics"
+       xmlns:text="clr-namespace:FreyaMobile.Services"
+       xmlns:images="clr-namespace:FreyaMobile.Features.Images"
+       Shell.FlyoutBehavior="Disabled">
+    <TabBar Route="Home">
+        <ShellContent Title="{text:Translate Key=menu_bottom_clinic}"
+                      Icon="pregnant.png"
+                      Route="ClinicsPage"
+                      ContentTemplate="{DataTemplate clinics:ClinicsPage}" />
+        <!--<ShellContent Title="Información"
+                      Icon="cat.png"
+                      x:Name="Info"
+                      Route="HelpAndInfoPage"
+                      ContentTemplate="{DataTemplate helpAndInfo:HelpAndInfoPage}" />-->
+        <ShellContent Title="{text:Translate Key=menu_bottom_profile}"
+                      Icon="profile.png"
+                      Route="ClientPage"
+                      ContentTemplate="{DataTemplate client:ClientPage}" />
+    </TabBar>
+    <!--<ShellContent Title="Images"
+                  Icon="cat.png"
+                  Route="ImagesPage"
+                  Shell.TabBarIsVisible="false"
+                  ContentTemplate="{DataTemplate images:ImagesPage}" />-->
+</Shell>

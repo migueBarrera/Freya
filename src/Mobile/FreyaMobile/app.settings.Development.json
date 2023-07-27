@@ -1,0 +1,11 @@
+{
+  "IsProductionEvironment": false,
+  "Server": {
+    "BaseUri": "https://freyadevelop.es/"
+  },
+  "AppCenter": {
+    "SecretAndroid": "YOUR_KEY",
+    "IsEnabledAnalitics": false,
+    "IsEnabledCrashes": true
+  }
+}

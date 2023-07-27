@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Name="self"
+               Color="Transparent"
+               VerticalOptions="Center"
+               xmlns:text="clr-namespace:FreyaMobile.Services"
+               Shell.PresentationMode="ModalAnimated"
+               x:Class="FreyaMobile.Features.Dialog.YesNoDialog">
+    <!-- On IOS, popup show a backgrond color  -->
+    <!-- https://github.com/CommunityToolkit/Maui/pull/789  -->
+
+    <Border Style="{StaticResource BorderMainDialogItemStyle}">
+        <VerticalStackLayout Padding="6">
+            <Label Text="Titulo"
+                   x:Name="TitleControl"
+                   Style="{StaticResource TitlePopup}" />
+            <Label Text="¿Cuerpo o pregunta?"
+                   x:Name="BodyControl"
+                   Style="{StaticResource BodyPopup}"
+                   HorizontalOptions="Center" />
+            <HorizontalStackLayout Margin="0,16,0,0"
+                                   HorizontalOptions="End">
+                <Button Text="{text:Translate Key=no}"
+                        Style="{StaticResource TertiaryStyleButton}"
+                        Clicked="CancelCliked" />
+                <Button Text="{text:Translate Key=yes}"
+                        Margin="12,0,0,0"
+                        Clicked="YesCliked" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Border>
+</toolkit:Popup>

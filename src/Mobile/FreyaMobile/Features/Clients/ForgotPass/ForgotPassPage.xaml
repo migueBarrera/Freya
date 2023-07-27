@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup  xmlns:core="clr-namespace:FreyaMobile.Core.Framework;assembly=FreyaMobile.Core"
+                xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="FreyaMobile.Features.Clients.ForgotPass.ForgotPassPage"
+                Shell.PresentationMode="ModalAnimated"
+                 xmlns:text="clr-namespace:FreyaMobile.Services"
+                Color="Transparent"
+                VerticalOptions="Center"
+                x:Name="self">
+    <Border Style="{StaticResource BorderMainDialogItemStyle}">
+       
+        <VerticalStackLayout Padding="6">
+            <Label Text="{text:Translate Key=dialog_recover_pass_title}"
+                   Style="{StaticResource TitlePopup}" />
+            <Entry HorizontalOptions="FillAndExpand"
+                   Placeholder="{text:Translate Key=email}"
+                   Keyboard="Email"
+                   Text="{Binding ForgotPassModel.Email.Value}">
+                <Entry.Behaviors>
+                    <!--<xct:MultiValidationBehavior Errors="{Binding ForgotPassModel.Email.Errors}"
+                                                     Flags="ValidateOnValueChanging"
+                                                     InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                     IsValid="{Binding ForgotPassModel.Email.IsValid}"
+                                                     ValidStyle="{StaticResource ValidEntryStyle}">
+                            <xct:EmailValidationBehavior xct:MultiValidationBehavior.Error="{x:Static res:Strings.Forgot_Pass_Error_Invalid_Email}" />
+                        </xct:MultiValidationBehavior>-->
+                </Entry.Behaviors>
+            </Entry>
+            <HorizontalStackLayout Margin="0,16,0,0"
+                                   HorizontalOptions="End">
+                <Button Text="{text:Translate Key=close}"
+                        Command="{Binding ClosePopupCommand}"
+                        Style="{StaticResource TertiaryStyleButton}"
+                        CommandParameter="{Binding Source={x:Reference self}}" />
+                <Button Text="{text:Translate Key=send}"
+                        Margin="8,0,0,0"
+                        CommandParameter="{Binding Source={x:Reference self}}"
+                        Command="{Binding ForgotPassCommand}" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Border>
+</toolkit:Popup>

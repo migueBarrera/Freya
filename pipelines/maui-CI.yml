@@ -1,0 +1,54 @@
+trigger:
+  none
+  
+pool:
+  vmImage: 'windows-2022'
+
+variables:
+  - group: net-versions
+  - name: solution
+    value: 'FreyaMobile.sln'
+  - name: csproj
+    value: 'src/Mobile/FreyaMobile/FreyaMobile.csproj'    
+  - name: buildConfiguration
+    value: 'Release'
+  - name: androidKeyStore
+    value: 'androidkey.jks'    
+  - name: androidKeyStorePass
+    value: 'w!ShN#va99X4'
+  - name: androidKeyStoreAlias
+    value: 'Freya'   
+  - name: androidKeyStoreAliasPass
+    value: 'w!ShN#va99X4'
+
+steps:  
+
+  - task: UseDotNet@2
+    inputs:
+      packageType: 'sdk'
+      version: '$(net-7-maui)'
+      includePreviewVersions: false  
+
+  - task: CmdLine@2
+    displayName: "Install maui workloads"
+    inputs:
+      script: 'dotnet workload install maui-android maui-ios'
+  - task: DotNetCoreCLI@2
+    displayName: "Build android"
+    inputs:
+      command: 'publish'
+      publishWebProjects: false
+      projects: '$(csproj)'
+      arguments: '-c $(buildConfiguration) -f net7.0-android /p:AndroidKeyStore=true /p:AndroidSigningKeyStore=$(androidKeyStore) /p:AndroidSigningStorePass=$(androidKeyStorePass) /p:AndroidSigningKeyAlias=$(androidKeyStoreAlias) /p:AndroidSigningKeyPass=$(androidKeyStoreAliasPass)'
+
+  - task: VSTest@2
+    displayName: Run tests
+    inputs:
+      testSelector: 'testAssemblies'
+      testAssemblyVer2: |
+        **\$(BuildConfiguration)\*\*tests.dll
+        !**\*TestAdapter.dll
+        !**\obj\**
+      searchFolder: '$(System.DefaultWorkingDirectory)'
+      codeCoverageEnabled: true
+      configuration: '$(buildConfiguration)'

@@ -1,0 +1,269 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+   
+    <Style TargetType="Button"
+           x:Key="TertiaryStyleButton">
+        <Setter Property="BorderThickness"
+                Value="2" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="{DynamicResource RobotoRegular}" />
+        <Setter Property="FontWeight"
+                Value="Regular" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="Padding"
+                Value="1" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource secondary3ColorBrush}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource textColorBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="grid">
+                        <Border x:Name="border"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="4"
+                                SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter"
+                                              Focusable="False"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{DynamicResource primary1ColorBrush}" />
+
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{DynamicResource disabledColorBrush}" />
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="{DynamicResource disabledColorBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="White" />
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="{DynamicResource primary1ColorBrush}" />
+                            <Setter Property="TextElement.Foreground"
+                                    TargetName="contentPresenter"
+                                    Value="{DynamicResource textColorBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="PrimaryStyleButton"
+           TargetType="Button">
+        <Setter Property="BorderThickness"
+                Value="2" />
+        <Setter Property="FontFamily"
+                Value="{DynamicResource RobotoRegular}" />
+        <Setter Property="FontWeight"
+                Value="Regular" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="Background"
+                Value="{DynamicResource primary1ColorBrush}" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource primary1ColorBrush}" />
+        <Setter Property="Foreground"
+                Value="White" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="grid">
+                        <Border x:Name="border"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="4"
+                                Padding="0"
+                                SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter"
+                                              Focusable="False"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                        <Border 
+                                x:Name="maskBorder"
+                                CornerRadius="4"
+                                Background="Transparent" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Button.IsPressed"
+                                 Value="True">
+                            <Setter TargetName="maskBorder"
+                                    Property="Opacity"
+                                    Value="1" />
+                            <Setter TargetName="maskBorder"
+                                    Property="Background"
+                                    Value="red" />
+                        </Trigger>
+                      
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{DynamicResource disabledColorBrush}" />
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="{DynamicResource disabledColorBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter TargetName="maskBorder"
+                                    Property="Opacity"
+                                    Value="0.1" />
+                            <Setter TargetName="maskBorder"
+                                    Property="Background"
+                                    Value="White" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="SecondaryStyleButton"
+           TargetType="Button"
+           BasedOn="{StaticResource TertiaryStyleButton}">
+        <Setter Property="BorderThickness"
+                Value="2" />
+        <Setter Property="FontFamily"
+                Value="{DynamicResource RobotoRegular}" />
+        <Setter Property="FontWeight"
+                Value="Regular" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="Padding"
+                Value="1" />
+        <Setter Property="Background"
+                Value="{DynamicResource secondary2ColorBrush}" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource secondary2ColorBrush}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource textColorBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="grid">
+                        <Border x:Name="border"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="4"
+                                SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter"
+                                              Focusable="False"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{DynamicResource disabledColorBrush}" />
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="{DynamicResource disabledColorBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{DynamicResource secondary3ColorBrush}" />
+                            <Setter Property="TextElement.Foreground"
+                                    TargetName="contentPresenter"
+                                    Value="{DynamicResource textColorBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="MediumPrimaryButton"
+           TargetType="Button"
+           BasedOn="{StaticResource PrimaryStyleButton}">
+        <Setter Property="Width"
+                Value="150" />
+        <Setter Property="Height"
+                Value="40" />
+    </Style>
+    <Style x:Key="MediumSecondaryButton"
+           TargetType="Button"
+           BasedOn="{StaticResource SecondaryStyleButton}">
+        <Setter Property="Width"
+                Value="150" />
+        <Setter Property="Height"
+                Value="40" />
+    </Style>
+    <Style x:Key="MediumTertiaryButton"
+           TargetType="Button"
+           BasedOn="{StaticResource TertiaryStyleButton}">
+        <Setter Property="Width"
+                Value="150" />
+        <Setter Property="Height"
+                Value="40" />
+    </Style>
+    <Style x:Key="SmallPrimaryButton"
+           TargetType="Button"
+           BasedOn="{StaticResource PrimaryStyleButton}">
+        <Setter Property="Width"
+                Value="100" />
+        <Setter Property="Height"
+                Value="32" />
+    </Style>
+    <Style x:Key="SmallSecondaryButton"
+           TargetType="Button"
+           BasedOn="{StaticResource SecondaryStyleButton}">
+        <Setter Property="Width"
+                Value="100" />
+        <Setter Property="Height"
+                Value="32" />
+    </Style>
+    <Style x:Key="SmallTertiaryButton"
+           TargetType="Button"
+           BasedOn="{StaticResource TertiaryStyleButton}">
+        <Setter Property="Width"
+                Value="150" />
+        <Setter Property="Height"
+                Value="32" />
+    </Style>
+    
+    
+</ResourceDictionary>

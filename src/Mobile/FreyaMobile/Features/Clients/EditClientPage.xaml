@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<core:CorePage xmlns:core="clr-namespace:FreyaMobile.Core.Framework;assembly=FreyaMobile.Core" xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FreyaMobile.Features.Clients.EditClientPage"
+               Shell.NavBarIsVisible="True"
+               Shell.TabBarIsVisible="false"
+               xmlns:text="clr-namespace:FreyaMobile.Services"
+             Title="{text:Translate Key=page_title_edit_profile}">
+    <ScrollView>
+        <StackLayout Padding="32" Spacing="6">
+            <Entry HorizontalOptions="FillAndExpand"
+                   Keyboard="Text"
+                   Placeholder="{text:Translate Key=name}"
+                   ReturnType="Next"
+                   Text="{Binding UpdateUser.Name.Value}"
+                   Visual="Default">
+                <!--<Entry.Behaviors>
+                    <xct:MultiValidationBehavior Errors="{Binding UpdateUser.Name.Errors}"
+                                                 Flags="ValidateOnValueChanging"
+                                                 InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                 IsValid="{Binding UpdateUser.Name.IsValid}"
+                                                 ValidStyle="{StaticResource ValidEntryStyle}">
+                        <xct:TextValidationBehavior xct:MultiValidationBehavior.Error="{x:Static res:Strings.Edit_User_Error_Min_Name}"
+                                                    MinimumLength="3" />
+                    </xct:MultiValidationBehavior>
+                </Entry.Behaviors>-->
+            </Entry>
+            <Entry HorizontalOptions="FillAndExpand"
+                   Keyboard="Text"
+                   Placeholder="{text:Translate Key=surname}"
+                   ReturnType="Next"
+                   Text="{Binding UpdateUser.LastName.Value}"
+                   Visual="Default">
+                <!--<Entry.Behaviors>
+                    <xct:MultiValidationBehavior Errors="{Binding UpdateUser.LastName.Errors}"
+                                                 Flags="ValidateOnValueChanging"
+                                                 InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                 IsValid="{Binding UpdateUser.LastName.IsValid}"
+                                                 ValidStyle="{StaticResource ValidEntryStyle}">
+                        <xct:TextValidationBehavior xct:MultiValidationBehavior.Error="{x:Static res:Strings.Edit_User_Error_Min_Last_Name}"
+                                                    MinimumLength="2" />
+                    </xct:MultiValidationBehavior>
+                </Entry.Behaviors>-->
+            </Entry>
+            <Entry HorizontalOptions="FillAndExpand"
+                   Keyboard="Telephone"
+                   Placeholder="{text:Translate Key=phone}"
+                   ReturnType="Done"
+                   Text="{Binding UpdateUser.Phone.Value}"
+                   Visual="Default">
+                <!--<Entry.Behaviors>
+                    <xct:MaskedBehavior Mask="XXX XXX XXX" />
+                </Entry.Behaviors>-->
+            </Entry>
+            <!--<Grid Margin="0,8"
+                  ColumnDefinitions="*,auto"
+                  ColumnSpacing="6"
+                  HorizontalOptions="StartAndExpand">
+                <Label Text="¿Estas embarazada?"
+                       VerticalOptions="Center"
+                       TextColor="Black" />
+                <Switch x:Name="styleSwitch"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        IsToggled="{Binding ArePregnant}">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="On">
+                                <VisualState.Setters>
+                                    <Setter Property="ThumbColor"
+                                            Value="{StaticResource primary1Color}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Off">
+                                <VisualState.Setters>
+                                    <Setter Property="ThumbColor"
+                                            Value="Gray" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Switch>
+            </Grid>-->
+            <!--<Entry IsVisible="{Binding Source={x:Reference styleSwitch}, Path=IsToggled}"
+                   Keyboard="Numeric"
+                   Placeholder="¿De cuantas semanas?"
+                   ReturnCommand="{Binding SaveUserCommand}"
+                   ReturnType="Done"
+                   Text="{Binding WeeksPregnancy}"
+                   Visual="Default" />-->
+            <Button Margin="0,32,0,0"
+                    Command="{Binding SaveUserCommand}"
+                    HorizontalOptions="Center"
+                    Text="{text:Translate Key=save}" />
+        </StackLayout>
+    </ScrollView>
+</core:CorePage>

@@ -1,0 +1,58 @@
+﻿<dialogs:CoreModalDialog x:Class="Features.Dialogs.ChangePassDialog"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       mc:Ignorable="d"
+                       xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+                       xmlns:trans="clr-namespace:Freya.Desktop.Localization.Services;assembly=Freya.Desktop.Localization"
+                       xmlns:dialogs="clr-namespace:Freya.Desktop.Dialogs.Core;assembly=Freya.Desktop.Dialogs"
+                       d:DesignHeight="450"
+                         Style="{DynamicResource DialogTemplate}"
+                       d:DesignWidth="800">
+    <Grid VerticalAlignment="Center"
+          HorizontalAlignment="Center">
+        <StackPanel Margin="46"
+                    Orientation="Vertical">
+            <TextBlock Margin="0,8"
+                       d:Text="Change pass"
+                       FontSize="{StaticResource H3FontSize}"
+                       Foreground="{StaticResource textColorBrush}"
+                       FontFamily="{StaticResource RobotoMedium}"
+                       Text="{trans:Translate change_your_pass}" />
+            <controls:TextBoxWithPlaceHolder IsPassword="True"
+                                             PlaceHolder="{trans:Translate currrent_pass}"
+                                             SVGSource="{StaticResource PadlockCloseDrawingImage}"
+                                             Text="{Binding ActualPass, Mode=TwoWay}"
+                                             MaxWidth="700"
+                                             Margin="0,30,0,0" />
+            <controls:TextBoxWithPlaceHolder IsPassword="True"
+                                             PlaceHolder="{trans:Translate new_pass}"
+                                             SVGSource="{StaticResource PadlockCloseDrawingImage}"
+                                             Text="{Binding NewPass, Mode=TwoWay}"
+                                             MaxWidth="700"
+                                             Margin="0,0,0,0" />
+            <controls:TextBoxWithPlaceHolder IsPassword="True"
+                                             PlaceHolder="{trans:Translate repeat_new_pass}"
+                                             SVGSource="{StaticResource PadlockCloseDrawingImage}"
+                                             Text="{Binding RepeatNewPass, Mode=TwoWay}"
+                                             MaxWidth="700"
+                                             Margin="0,0,0,0" />
+            <StackPanel HorizontalAlignment="Right"
+                        Margin="0,32,0,0"
+                        Orientation="Horizontal">
+                <Button Content="{trans:Translate close}"
+                        Style="{StaticResource MediumTertiaryButton}"
+                        Command="{Binding CancelCommand}"
+                        HorizontalAlignment="Center"
+                        Margin="0,0,12,0" />
+                <Button Content="{trans:Translate change}"
+                        Style="{StaticResource MediumPrimaryButton}"
+                        Command="{Binding ChangePassCommand}"
+                        HorizontalAlignment="Center" />
+            </StackPanel>
+        </StackPanel>
+        <!---->
+        <controls:LoaderView IsRunning="{Binding IsBusy, FallbackValue=false}" />
+    </Grid>
+</dialogs:CoreModalDialog>

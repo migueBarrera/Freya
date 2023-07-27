@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<core:CorePage xmlns:core="clr-namespace:FreyaMobile.Core.Framework;assembly=FreyaMobile.Core"
+               xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="FreyaMobile.Features.Videos.VideosPage"
+               Shell.NavBarIsVisible="True"
+               xmlns:text="clr-namespace:FreyaMobile.Services"
+               Shell.TabBarIsVisible="false"
+               Title="{text:Translate Key=page_title_videos}">
+    <CollectionView ItemsLayout="VerticalGrid, 3"
+                    ItemsSource="{Binding Videos}"
+                    SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                    SelectionChangedCommand="{Binding SelectionChangedCommand}"
+                    SelectionMode="Single">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="4"
+                      IsClippedToBounds="True">
+                    <Border Style="{StaticResource BorderImageMainItemStyle}"
+                            WidthRequest="88">
+                        <Grid>
+                            <Image Aspect="AspectFill"
+                                   HeightRequest="88"
+                                   BackgroundColor="Gray"
+                                   Source="{Binding ThumbnailUrl,TargetNullValue=default-placeholder.png}"
+                                   WidthRequest="88" />
+                            <Image HeightRequest="32"
+                                   HorizontalOptions="Center"
+                                   Source="play_circle.png"
+                                   VerticalOptions="Center"
+                                   WidthRequest="32" />
+                        </Grid>
+                     
+                    </Border>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        <CollectionView.EmptyView>
+            <Grid>
+                <VerticalStackLayout IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                                     VerticalOptions="Center">
+                    <Image Source="{AppThemeBinding Light=no_search_multimedia.png, Dark=no_search_multimedia_dark.png}"
+                           WidthRequest="120"
+                           HeightRequest="120" />
+                    <Label Style="{StaticResource EmptyLabelStyle}"
+                           Text="{text:Translate Key=no_found_videos}" />
+                </VerticalStackLayout>
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}" />
+            </Grid>
+        </CollectionView.EmptyView>
+    </CollectionView>
+</core:CorePage>

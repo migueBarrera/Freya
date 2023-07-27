@@ -1,0 +1,49 @@
+trigger:
+  none
+
+pool:
+  vmImage: 'windows-2022'
+
+variables:
+  - group: net-versions
+  - name: solution
+    value: 'FreyaManager.sln'
+  - name: buildPlatform
+    value: 'Any CPU'
+  - name: buildConfiguration
+    value: 'Release'
+
+steps:
+
+- task: UseDotNet@2
+  inputs:
+   packageType: 'sdk'
+   version: '$(net-7)'
+   includePreviewVersions: false 
+
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  displayName: Restore solution Nugets
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+  displayName: Build Solution
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: VSTest@2
+  displayName: Run tests
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\$(BuildConfiguration)\*\*tests.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    codeCoverageEnabled: true
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'

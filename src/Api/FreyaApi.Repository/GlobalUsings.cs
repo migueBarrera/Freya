@@ -1,0 +1,10 @@
+﻿global using FreyaApi.Infrastructure.Models;
+global using FreyaApi.Repository.Interfaces;
+global using Models.Core.Clinics;
+global using Models.Core.Employees;
+global using Models.Core.FAQ;
+global using Models.Core.Subscriptions;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.Logging;

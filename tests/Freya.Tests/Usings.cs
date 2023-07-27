@@ -1,0 +1,12 @@
+global using NUnit.Framework;
+global using AppCenterServices;
+global using Freya.Desktop.Core.Services.Interrfaces;
+global using Freya.Desktop.Core.Services;
+global using Freya.Features.Clinics;
+global using Freya.Localization.Abstractions;
+global using Moq;
+global using Freya.Desktop.Dialogs.Interfaces;
+global using Freya.Desktop.Core.Features.Clinics;
+global using Freya.Features.Clinics.Services;
+global using Freya.Services;
+global using Models.Core.Employees;

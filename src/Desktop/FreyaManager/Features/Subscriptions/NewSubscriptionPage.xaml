@@ -1,0 +1,104 @@
+﻿<core:CorePage x:Class="FreyaManager.Features.Subscriptions.NewSubscriptionPage"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               mc:Ignorable="d"
+               xmlns:templates="clr-namespace:FreyaManager.Features.Subscriptions.Templates"
+               Style="{StaticResource PageStyle}"
+               xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+               xmlns:core="clr-namespace:Freya.Desktop.Core.Framework;assembly=Freya.Desktop.Core"
+               d:DesignHeight="450"
+               d:DesignWidth="800"
+               Title="SubscriptionsPage">
+    <ScrollViewer>
+        <Grid>
+            <Border Style="{DynamicResource BorderCardStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Nuevo Plan de pagos"
+                               FontSize="{StaticResource H3FontSize}"
+                               FontFamily="{StaticResource RobotoMedium}"
+                               Margin="0,0,0,16"
+                               HorizontalAlignment="Left"
+                               Foreground="{StaticResource primary1ColorBrush}" />
+                    <StackPanel Orientation="Vertical"
+                                Grid.Row="1">
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="Nombre de la subscripción (Plan básico)"
+                                                         Title="Subscripción"
+                                                         Text="{Binding NewSubscription.Name.Value, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="Descripción de la subscripción"
+                                                         Title="Descripción"
+                                                         TextWrapping="Wrap"
+                                                         Text="{Binding NewSubscription.Description.Value, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="Precio mensual"
+                                                         Title="Cantidad en centimos(EUR) (Plan mensual) (IVA inlcuido)"
+                                                         Text="{Binding NewSubscription.PriceMonthly.Value, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <!--<controls:TextBoxWithPlaceHolder PlaceHolder="Espacio de almacenamiento"
+                                                         Title="Espacio del plan de pago (Megabytes)"
+                                                         Text="{Binding NewSubscription.Size.Value, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />-->
+                        <StackPanel Orientation="Vertical" Margin="0,0,0,8">
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox VerticalContentAlignment="Center" IsChecked="{Binding 
+                                 NewSubscription.HasAnnualPrice.Value}"
+                                      x:Name="PermitAnnual"
+                                      Margin="0,0,4,0"/>
+                                <TextBlock Text="Permitir plan anual"
+                                       VerticalAlignment="Center"
+                                       />
+                            </StackPanel>
+                           
+                            <controls:TextBoxWithPlaceHolder PlaceHolder="Precio Anual"
+                                                         Title="Cantidad en centimos(EUR) (Plan anual) (IVA inlcuido)"
+                                                         Text="{Binding NewSubscription.PriceAnnual.Value, Mode=TwoWay}"
+                                                         Margin="0,0,0,8"
+                                                             Visibility="{Binding ElementName=PermitAnnual, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <CheckBox VerticalContentAlignment="Center" IsChecked="{Binding 
+                                 NewSubscription.AllowPromotionCodes.Value}" Margin="0,0,4,0"/>
+                            <TextBlock Text="Permite códigos de promoción"
+                                       VerticalAlignment="Center"
+                                       />
+                        </StackPanel>
+                        <TextBlock Text="Espacio de almacenamiento"
+                                   Margin="0,0,0,8" />
+
+                        <ListView ItemsSource="{Binding SizesAvailables}"
+                                  SelectedIndex="{Binding SizeSelectedIndex}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Key}" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right"
+                                Grid.Row="2"
+                                Orientation="Horizontal">
+                        <Button Content="Cancelar"
+                                Style="{StaticResource MediumTertiaryButton}"
+                                Command="{Binding BackCommand}"
+                                HorizontalAlignment="Center"
+                                MinWidth="150"
+                                Margin="0,0,12,0" />
+                        <Button Content="Añadir plan"
+                                Style="{StaticResource MediumPrimaryButton}"
+                                Command="{Binding CreateSubscriptionCommand}"
+                                HorizontalAlignment="Center"
+                                MinWidth="150" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</core:CorePage>

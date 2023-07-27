@@ -1,0 +1,149 @@
+﻿<core:CorePage x:Class="Freya.Features.Subscriptions.SubscriptionPaymentDetailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Freya.Features.Subscriptions"
+      mc:Ignorable="d" 
+       xmlns:trans="clr-namespace:Freya.Desktop.Localization.Services;assembly=Freya.Desktop.Localization"
+               Style="{DynamicResource PageStyle}"
+               xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+      xmlns:core="clr-namespace:Freya.Desktop.Core.Framework;assembly=Freya.Desktop.Core"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SubscriptionPaymentDetailPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid  Grid.Row="0">
+            <Border Style="{StaticResource BorderItemCardStyle}" VerticalAlignment="Top">
+                <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Stretch"
+                    MinWidth="180"
+                    VerticalAlignment="Center">
+                    <TextBlock Text="{Binding SubscriptionPaymentResponse.Name}"
+                       d:Text="Plan Básico"
+                       VerticalAlignment="Center"
+                       FontSize="17"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center"
+                       Foreground="Black" />
+                    <TextBlock Text="{Binding SubscriptionPaymentResponse.Size, Converter={StaticResource SizeToTextConverter}}"
+                       d:Text="5 GB"
+                       Margin="0,4,0,0"
+                       Style="{StaticResource FileSizeStyle}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+                    <TextBlock Text="{Binding SubscriptionPaymentResponse.Description}"
+                       MaxWidth="380"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       Margin="0,6,0,0"
+                       d:Text="Este plan esta pensado para pequeñas clínicas que no tienen un gran volumen de datos"
+                       VerticalAlignment="Center"
+                       FontSize="13"
+                       FontWeight="Light"
+                       HorizontalAlignment="Stretch"
+                       Foreground="Gray" />
+                    <Grid Margin="0,6,0,6">
+                        <StackPanel Orientation="Vertical">
+                            <controls:ClinicPaymentStatus Grid.Column="3"
+                                                 HorizontalAlignment="Center"
+                                                 ShowPlanName="False"
+                                                 SubscriptionPayment="{Binding SubscriptionPaymentResponse}" 
+                                                 Margin="0,0,0,12"/>
+
+                        </StackPanel>
+                    </Grid>
+                    <Button Content="{trans:Translate payment_product_current_cancel}"
+                        Command="{Binding CancelSubscriptionCommand}"
+                            Visibility="{Binding CanCancelateSubscription, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Style="{DynamicResource SmallSecondaryButton}"
+                        HorizontalAlignment="Center" />
+
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <TextBlock Text="{trans:Translate charges_done}"
+                               FontSize="{DynamicResource H4FontSize}"
+                               Margin="24,24,0,0"
+                   Grid.Row="1"
+                               FontFamily="{DynamicResource RobotoMedium}"
+                               FontWeight="Medium"
+                               Foreground="{DynamicResource textDarkColorBrush}" />
+        <ListView ItemsSource="{Binding SubscriptionCharges}"
+                  Grid.Row="2"
+                              VerticalAlignment="Top"
+                              HorizontalAlignment="Stretch"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                              ItemContainerStyle="{DynamicResource ListboxItemStyle}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Style="{StaticResource BorderItemCardStyle}" HorizontalAlignment="Stretch">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Fecha de cargo:"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource RobotoBold}" FontWeight="Bold"
+                                           FontSize="{StaticResource H5FontSize}"
+                                           Margin="0,0,4,0"></TextBlock>
+                                <TextBlock Text="{Binding Created, StringFormat='dd MMMM yyyy, hh:mm'}"
+                                           VerticalAlignment="Center"
+                                           Language="es"
+                                           FontFamily="{StaticResource RobotoRegular}" FontWeight="Regular"
+                                           FontSize="{StaticResource H6FontSize}"></TextBlock>
+                            </StackPanel>
+                            <Border 
+                                Grid.Column="1"
+                                VerticalAlignment="Center"
+                                Background="Green"
+                                Padding="8,4"
+                                CornerRadius="4"
+                                Visibility="{Binding IsPaid, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                HorizontalAlignment="Center">
+                                <TextBlock Text="Pagado"></TextBlock>
+                            </Border>
+                            <Border 
+                                Grid.Column="1"
+                                VerticalAlignment="Center"
+                                Background="Red"
+                                Visibility="{Binding IsPaid, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter='Inverter'}"
+                                Padding="8,4"
+                                CornerRadius="4"
+                                HorizontalAlignment="Center">
+                                <TextBlock Text="Error"></TextBlock>
+                            </Border>
+
+                            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                <TextBlock FontFamily="{StaticResource RobotoRegular}" FontWeight="Regular"
+                                           FontSize="{StaticResource H6FontSize}" Text="{Binding Amount, Converter={StaticResource CentsToEurConverters}}"></TextBlock>
+                                <TextBlock FontFamily="{StaticResource RobotoRegular}" FontWeight="Regular"
+                                           FontSize="{StaticResource H6FontSize}" Text="€" Margin="4,0"></TextBlock>
+                            </StackPanel>
+                            <!--<StackPanel Grid.Column="2" Orientation="Horizontal" Visibility="{Binding IsPaid, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter='Inverter'}">
+                                <TextBlock Text="Error"></TextBlock>
+                                <TextBlock Text="{Binding Error}"></TextBlock>
+                            </StackPanel>-->
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</core:CorePage>

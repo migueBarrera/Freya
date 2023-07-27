@@ -1,0 +1,43 @@
+trigger: none 
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - group: net-versions
+  - name: solution
+    value: 'FreyaApi.sln'
+  - name: buildConfiguration
+    value: 'Release'
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '$(net-7)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: $(solution)
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: build
+    projects: $(solution)
+    arguments: '--configuration $(buildConfiguration)'
+
+# Because VSTest only can use on Windows, we need use this task on Ubuntu. This task can not permit execute Test on solution and need set one to one.
+# We need remove the next line from "Test" task because here, at pipelines, do not run in secuence, run in parallel, and this cause test fail.
+#       **/UploaderWasabi.Tests.csproj
+- task: DotNetCoreCLI@2
+  displayName: "Test"
+  inputs:
+     command: test
+     projects: |
+      **/FreyaApi.Tests.csproj
+      **/FreyaApi.Repository.Tests.csproj
+      **/Models.Core.Tests.csproj
+      **/FreyaPayments.Core.Tests.csproj
+     arguments: '--configuration $(buildConfiguration)'

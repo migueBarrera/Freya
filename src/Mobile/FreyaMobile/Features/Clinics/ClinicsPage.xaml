@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<core:CorePage xmlns:core="clr-namespace:FreyaMobile.Core.Framework;assembly=FreyaMobile.Core"
+               xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:local="clr-namespace:FreyaMobile.Features.Clinics"
+               x:Class="FreyaMobile.Features.Clinics.ClinicsPage"
+               Title="ClinicsPage">
+    <Grid>
+        <Grid IsVisible="{Binding IsLogged, Converter={StaticResource InverseBoolConverter}}">
+            <local:ClinicNotLoggedView BindingContext="{Binding ClinicNotLoggedViewModel}" />
+        </Grid>
+        <Grid IsVisible="{Binding IsLogged}">
+            <Grid IsVisible="{Binding HasClientData, Converter={StaticResource InverseBoolConverter}}">
+                <local:ClinicLoggedWithOutClinicDataView BindingContext="{Binding ClinicLoggedWithOutClinicDataViewModel}" />
+            </Grid>
+            <Grid IsVisible="{Binding HasClientData}">
+                <local:ClinicLoggedWithClinicDataView BindingContext="{Binding ClinicLoggedWithClinicDataViewModel}" />
+            </Grid>
+        </Grid>
+    </Grid>
+</core:CorePage>

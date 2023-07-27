@@ -1,0 +1,264 @@
+﻿<core:CorePage x:Class="Freya.Features.Clients.ClientDetailPage"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               mc:Ignorable="d"
+               xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+               xmlns:core="clr-namespace:Freya.Desktop.Core.Framework;assembly=Freya.Desktop.Core"
+               d:DesignHeight="750"
+			   xmlns:templates="clr-namespace:Freya.Desktop.Core.Features.Clients.Templates;assembly=Freya.Desktop.Core"
+               xmlns:lang="clr-namespace:Freya.Desktop.Localization.Services;assembly=Freya.Desktop.Localization"
+               Style="{StaticResource PageStyle}"
+               d:DesignWidth="1200"
+               xmlns:control="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core">
+    <core:CorePage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="TextBlock"
+                   x:Key="ClientFieldsStyle">
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter Property="TextWrapping"
+                        Value="Wrap" />
+                <Setter Property="Margin"
+                        Value="0,0,0,12" />
+                <Setter Property="FontSize"
+                        Value="{DynamicResource H7FontSize}" />
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource RobotoRegular}" />
+                <Setter Property="FontWeight"
+                        Value="Regular" />
+                <Setter Property="Foreground"
+                        Value="{DynamicResource textDarkColorBrush}" />
+            </Style>
+        </ResourceDictionary>
+    </core:CorePage.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="270" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border Style="{DynamicResource BorderCardStyle}"
+                Padding="16">
+            <StackPanel Orientation="Vertical">
+                <Border  Height="80"
+                         Width="80"
+                         Margin="0,0,0,16"
+                         CornerRadius="40">
+                    <Border.Background>
+                        <ImageBrush Stretch="UniformToFill"
+                                    ImageSource="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />
+                    </Border.Background>
+                </Border>
+                <TextBlock Margin="0,0,0,18"
+                           FontSize="{DynamicResource H6FontSize}"
+                           TextWrapping="WrapWithOverflow"
+                           FontFamily="{DynamicResource RobotoMedium}"
+                           FontWeight="Medium"
+                           TextAlignment="Center"
+                           HorizontalAlignment="Center"
+                           d:Text="Miguel Barrera Muñoz"
+                           Foreground="{DynamicResource textDarkColorBrush}"
+                           Style="{StaticResource ClientFieldsStyle}">
+                        <Run Text="{Binding Client.Name}" />
+                        <Run Text="{Binding Client.LastName}" /></TextBlock>
+                <TextBlock Text="{Binding Client.Email}"
+                           d:Text="mbmdevelop@gmail.com"
+                           Style="{StaticResource ClientFieldsStyle}" />
+                <TextBlock Text="{Binding Client.Phone, Converter={StaticResource StringToPhoneConverter}}"
+                           d:Text="603033613"
+                           Style="{StaticResource ClientFieldsStyle}" />
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,4"
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding Client.Size, Converter={StaticResource SizeToTextConverter}}"
+                               d:Text="5 GB"
+                               Style="{StaticResource FileSizeStyle}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center" />
+                    <TextBlock Text="/"
+                               FontSize="{DynamicResource H6FontSize}"
+                               Foreground="{DynamicResource textDarkColorBrush}"
+                               FontWeight="Bold"
+                               FontFamily="{DynamicResource RobotoBold}" />
+                    <TextBlock Text="{Binding Client.SubscriptionPlanSize, Converter={StaticResource SizeToTextConverter}}"
+                               d:Text="5 GB"
+                               Style="{StaticResource FileSizeStyle}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center" />
+                </StackPanel>
+                <control:SizeProgressBarControl  Value="{Binding Client.Size, FallbackValue=0}"
+                                                 MaxValue="{Binding Client.SubscriptionPlanSize, FallbackValue=0}" />
+                <Button Content="{lang:Translate update_plan}"
+                        Margin="6,12"
+                        Command="{Binding UpdateSubscriptionPlanCommand}"
+                        Visibility="{Binding ClinicHasDiferentSubscriptionPlan, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Style="{StaticResource SmallTertiaryButton}"/>
+                <Grid Height="1"
+                      HorizontalAlignment="Stretch"
+                      Background="Gray"
+                      Margin="12" />
+                <StackPanel Orientation="Horizontal">
+                    <controls:IconButtonControl Command="{Binding EditClientCommand}"
+                                                Margin="8,0,0,0"
+                                                Style="{StaticResource MediumPrimaryStyleIconButton}"
+                                                ImageSource="{StaticResource EditWhiteIcon}" />
+                    <controls:IconButtonControl Command="{Binding DeleteClientCommand}"
+                                                Margin="8,0,0,0"
+                                                Style="{StaticResource MediumPrimaryStyleIconButton}"
+                                                ImageSource="{StaticResource DeleteIcon}" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Margin="0,36,32,24">
+                <RadioButton x:Name="UltrasoundRadioButton"
+                             Style="{StaticResource RecordRadioButtonStyle}"
+                             IsChecked="True">
+                    <TextBlock Text="{lang:Translate images}"
+                               Margin="4" />
+                </RadioButton>
+                <RadioButton x:Name="VideosRadioButton"
+                             Margin="12,0"
+                             Style="{StaticResource RecordRadioButtonStyle}">
+                    <TextBlock Text="{lang:Translate videos}"
+                               Margin="4" />
+                </RadioButton>
+                <RadioButton x:Name="SoundRadioButton"
+                             Style="{StaticResource RecordRadioButtonStyle}">
+                    <TextBlock Text="{lang:Translate sounds}"
+                               Margin="4" />
+                </RadioButton>
+            </StackPanel>
+            <Button Content="{lang:Translate upload_images}"
+                    Style="{StaticResource SmallPrimaryButton}"
+                    HorizontalAlignment="Right"
+                    Margin="0,36,32,24"
+                    Visibility="{Binding IsChecked, ElementName=UltrasoundRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Command="{Binding UploadFileCommand}" />
+            <Button Content="{lang:Translate upload_videos}"
+                    HorizontalAlignment="Right"
+                    Margin="0,36,32,24"
+                    Style="{StaticResource SmallPrimaryButton}"
+                    Visibility="{Binding IsChecked, ElementName=VideosRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Command="{Binding UploadVideoCommand}" />
+            <Button Content="{lang:Translate upload_sounds}"
+                    Margin="0,36,32,24"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource SmallPrimaryButton}"
+                    Visibility="{Binding IsChecked, ElementName=SoundRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Command="{Binding UploadSoundCommand}" />
+            <Grid Grid.Row="1"
+                  Visibility="{Binding IsChecked, ElementName=UltrasoundRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Visibility="{Binding Ultrasounds.Count, Converter={StaticResource IsZeroValueToVisibilityConverter}}">
+                    <StackPanel Orientation="Vertical"
+                                VerticalAlignment="Center">
+                        <Image Source="{StaticResource NoItemsIcon}"
+                               Width="200"
+                               Height="200" />
+                        <TextBlock Text="{lang:Translate no_images_found}"
+                                   Foreground="{DynamicResource primary1ColorBrush}"
+                                   FontSize="{DynamicResource H3FontSize}"
+                                   FontWeight="Regular"
+                                   HorizontalAlignment="Center"
+                                   FontFamily="{DynamicResource RobotoRegular}" />
+                    </StackPanel>
+                </StackPanel>
+                <ListView ItemsSource="{Binding Ultrasounds}"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          HorizontalAlignment="Left"
+                          ItemContainerStyle="{DynamicResource ListboxItemStyle}"
+                          Visibility="{Binding Ultrasounds.Count, Converter={StaticResource IsZeroValueToVisibilityConverter}, ConverterParameter=inverter}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <templates:ClientImageItemTemplate Margin="0" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <Grid Visibility="{Binding IsChecked, ElementName=VideosRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}"
+                  Grid.Row="1">
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Visibility="{Binding Videos.Count, Converter={StaticResource IsZeroValueToVisibilityConverter}}">
+                    <StackPanel Orientation="Vertical"
+                                VerticalAlignment="Center">
+                        <Image Source="{StaticResource NoItemsIcon}"
+                               Width="200"
+                               Height="200" />
+                        <TextBlock Text="{lang:Translate no_videos_found}"
+                                   Foreground="{DynamicResource primary1ColorBrush}"
+                                   FontSize="{DynamicResource H3FontSize}"
+                                   FontWeight="Regular"
+                                   HorizontalAlignment="Center"
+                                   FontFamily="{DynamicResource RobotoRegular}" />
+                    </StackPanel>
+                </StackPanel>
+                <ListView ItemsSource="{Binding Videos}"
+                          Visibility="{Binding Videos.Count, Converter={StaticResource IsZeroValueToVisibilityConverter}, ConverterParameter=inverter}"
+                          ItemContainerStyle="{DynamicResource ListboxItemStyle}"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <templates:ClientVideoItemTemplate Margin="0" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <!--Sounds-->
+            <Grid Visibility="{Binding IsChecked, ElementName=SoundRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}"
+                  Grid.Row="1">
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Visibility="{Binding Sounds.Count, Converter={StaticResource IsZeroValueToVisibilityConverter}}">
+                    <StackPanel Orientation="Vertical"
+                                VerticalAlignment="Center">
+                        <Image Source="{StaticResource NoItemsIcon}"
+                               Width="200"
+                               Height="200" />
+                        <TextBlock Text="{lang:Translate no_sounds_found}"
+                                   Foreground="{DynamicResource primary1ColorBrush}"
+                                   FontSize="{DynamicResource H3FontSize}"
+                                   FontWeight="Regular"
+                                   HorizontalAlignment="Center"
+                                   FontFamily="{DynamicResource RobotoRegular}" />
+                    </StackPanel>
+                </StackPanel>
+                <ListView ItemsSource="{Binding Sounds}"
+                          ItemContainerStyle="{DynamicResource ListboxItemStyle}"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          Visibility="{Binding Sounds.Count, Converter={StaticResource IsZeroValueToVisibilityConverter}, ConverterParameter=inverter}"
+                          Grid.Row="1">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <templates:ClientSoundItemTemplate Margin="0" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Grid>
+</core:CorePage>

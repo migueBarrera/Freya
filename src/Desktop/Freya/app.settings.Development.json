@@ -1,0 +1,20 @@
+{
+  "IsProductionEvironment": false,
+  "Server": {
+    "BaseUri": "https://freyadevelop.es/"
+  },
+  "Data": {
+    "AppUpdateUrl": "https://mibebetestmbmdevelop.blob.core.windows.net/development/Freya.zip"
+  },
+  "AWS": {
+    "ACCESSKEY": "YOUR_KEY",
+    "SECRETKEY": "YOUR_KEY",
+    "Region": "eu-west-2",
+    "Uri": "https://s3.{0}.wasabisys.com/"
+  },
+  "AppCenter": {
+    "Secret": "YOUR_KEY",
+    "IsEnabledAnalitics": true,
+    "IsEnabledCrashes": true
+  }
+}

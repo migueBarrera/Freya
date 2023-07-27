@@ -1,0 +1,10 @@
+global using NUnit.Framework;
+global using ApiContract.Refit;
+global using AppCenterServices;
+global using Freya.Desktop.Core.Features.Clients;
+global using Freya.Desktop.Core.Features.Clients.Services;
+global using Freya.Desktop.Core.Services;
+global using Freya.Desktop.Core.Services.Interrfaces;
+global using Freya.Desktop.Dialogs.Interfaces;
+global using Freya.Localization.Abstractions;
+global using Moq;

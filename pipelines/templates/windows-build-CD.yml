@@ -1,0 +1,87 @@
+parameters:
+- name: csproj
+  type: string 
+  default: ""
+- name: appVersion
+  type: string 
+  default: ""
+- name: outputFolder
+  type: string 
+  default: ""
+- name: projectName
+  type: string 
+  default: ""  
+- name: nsinsScript
+  type: string 
+  default: "" 
+- name: netSDK
+  type: string 
+  default: "" 
+
+steps:
+- pwsh: |
+    If ("$(Build.SourceBranch)" -eq "refs/heads/main") {
+      Write-Host "##vso[task.setvariable variable=buildConfiguration;]Release"
+    }else {
+      Write-Host "##vso[task.setvariable variable=buildConfiguration;]Development"
+    }
+  name: UpdateEnvironment
+  displayName: 'Environment Selector'
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '7.0.203'
+    includePreviewVersions: false  
+- task: NuGetToolInstaller@1
+- task: DotNetCoreCLI@2
+  displayName: Restore project Nugets
+  inputs:
+    command: 'restore'
+    projects: '$(csproj)'
+- task: Assembly-Info-NetCore@3
+  inputs:
+    Path: '$(Build.SourcesDirectory)'
+    FileNames: '**/*.csproj'
+    InsertAttributes: false
+    FileEncoding: 'auto'
+    WriteBOM: false
+    Authors: 'Freya'
+    Company: 'Freya'
+    Copyright: 'Copyright © $(date:YYYY) Freya'
+    LogLevel: 'verbose'
+    FailOnWarning: false
+    DisableTelemetry: false
+    AddBuildTag: '$(appVersion)'
+    VersionNumber: '$(appVersion)'
+    PackageVersion: '$(appVersion)'
+    FileVersionNumber: '$(appVersion)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '$(csproj)'
+    arguments: '--configuration $(BuildConfiguration) --output $(outputFolder) -r win-x64 --self-contained false'
+    zipAfterPublish: false
+    modifyOutputPath: false
+- task: PowerShell@2
+  displayName: Generate installer
+  inputs:
+    targetType: 'inline'
+    script: 'makensis /DVERSION=$(appVersion) /DBINARIES_FOLDER=$(outputFolder) ${{ parameters.nsinsScript }}'
+    workingDirectory: '$(Build.SourcesDirectory)/src/Desktop/NSISInstaller'
+    
+- task: ArchiveFiles@2
+  displayName: 'Create ZIP file'
+  inputs:
+    rootFolderOrFile: 'src/Desktop/NSISInstaller/${{ parameters.projectName }}$(appVersion)_x64.exe' 
+    includeRootFolder: false
+    archiveType: 'zip' 
+    archiveFile: '$(Build.ArtifactStagingDirectory)/${{ parameters.projectName }}.zip' 
+    replaceExistingArchive: false 
+    verbose: true
+    
+- task: PublishBuildArtifacts@1
+  displayName: "Publish artifacts"
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/'
+    publishLocation: 'Container'

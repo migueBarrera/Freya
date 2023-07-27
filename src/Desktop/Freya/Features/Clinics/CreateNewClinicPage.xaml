@@ -1,0 +1,73 @@
+﻿<core:CorePage x:Class="Freya.Features.Clinics.CreateNewClinicPage"
+               xmlns:core="clr-namespace:Freya.Desktop.Core.Framework;assembly=Freya.Desktop.Core"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               mc:Ignorable="d"
+               xmlns:trans="clr-namespace:Freya.Desktop.Localization.Services;assembly=Freya.Desktop.Localization"
+               xmlns:controls="clr-namespace:Freya.Desktop.Core.Controls;assembly=Freya.Desktop.Core"
+               d:DesignHeight="450"
+               Style="{DynamicResource PageStyle}"
+               d:DesignWidth="800"
+               Title="CreateNewClinicPage">
+   
+    <ScrollViewer>
+        <Grid>
+            <Border Style="{DynamicResource BorderCardStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{trans:Translate new_clinic}"
+                               FontSize="{StaticResource H3FontSize}"
+                               FontFamily="{StaticResource RobotoMedium}"
+                               Margin="0,0,0,16"
+                               HorizontalAlignment="Left"
+                               Foreground="{StaticResource primary1ColorBrush}" />
+           
+                    <StackPanel Orientation="Vertical"
+                                Grid.Row="1">
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="{trans:Translate name_of_clinic}"
+                                                         Title="{trans:Translate name}"
+                                                         Text="{Binding NewClinicModel.Name, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="{trans:Translate nif}"
+                                                         Title="{trans:Translate nif_of_clinic}"
+                                                         Text="{Binding NewClinicModel.NIF, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="{trans:Translate address}"
+                                                         Title="{trans:Translate address_of_clinic}"
+                                                         Text="{Binding NewClinicModel.Adress, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="{trans:Translate email}"
+                                                         Title="{trans:Translate email}"
+                                                         Text="{Binding NewClinicModel.Phone, Mode=TwoWay}"
+                                                         Margin="0,0,0,8" />
+                        <controls:TextBoxWithPlaceHolder PlaceHolder="{trans:Translate phone}"
+                                                         Title="{trans:Translate phone}"
+                                                         Text="{Binding NewClinicModel.Email, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource StringToPhoneConverter}}"
+                                                         Margin="0,0,0,8" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right"
+                                Grid.Row="2"
+                                Orientation="Horizontal">
+                        <Button Content="{trans:Translate cancel}"
+                                Style="{StaticResource MediumTertiaryButton}"
+                                Command="{Binding BackCommand}"
+                                HorizontalAlignment="Center"
+                                MinWidth="150"
+                                Margin="0,0,12,0" />
+                        <Button Content="{trans:Translate add_clinic}"
+                                Style="{StaticResource MediumPrimaryButton}"
+                                Command="{Binding CreateClinicCommand}"
+                                HorizontalAlignment="Center"
+                                MinWidth="150" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</core:CorePage>

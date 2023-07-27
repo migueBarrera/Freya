@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<core:CorePage xmlns:core="clr-namespace:FreyaMobile.Core.Framework;assembly=FreyaMobile.Core"
+               xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="FreyaMobile.Features.Images.ImagesPage"
+               Shell.NavBarIsVisible="True"
+               Shell.TabBarIsVisible="false"
+               xmlns:text="clr-namespace:FreyaMobile.Services"
+               Title="{text:Translate Key=page_title_images}">
+    <CollectionView ItemsLayout="VerticalGrid, 3"
+                    ItemsSource="{Binding Images}"
+                    SelectedItem="{Binding SelectedImage}"
+                    SelectionChangedCommand="{Binding SelectionChangedCommand}"
+                    SelectionMode="Single">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="4">
+                    <Border Style="{StaticResource BorderImageMainItemStyle}"
+                            HeightRequest="88"
+                            WidthRequest="88">
+                        <Image Aspect="AspectFill"
+                               HeightRequest="88"
+                               Source="{Binding Image}"
+                               WidthRequest="88" />
+                    </Border>
+                   
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        <CollectionView.EmptyView>
+            <Grid>
+                <VerticalStackLayout IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                                     VerticalOptions="Center">
+                    <Image Source="{AppThemeBinding Light=no_search_multimedia.png, Dark=no_search_multimedia_dark.png}"
+                           WidthRequest="120"
+                           HeightRequest="120" />
+                    <Label Style="{StaticResource EmptyLabelStyle}"
+                           Text="{text:Translate Key=no_found_images}" />
+                </VerticalStackLayout>
+            
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}" />
+            </Grid>
+        </CollectionView.EmptyView>
+    </CollectionView>
+</core:CorePage>
